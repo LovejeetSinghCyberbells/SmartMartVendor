@@ -43,6 +43,7 @@ const OrderStatusBadge: React.FC<Props> = ({ status, size = 'md' }) => {
       variant={config.variant}
       backgroundColor={config.bg}
       textColor={config.text}
+      showDot={status === 'NEW'}
       size={size}
     />
   );

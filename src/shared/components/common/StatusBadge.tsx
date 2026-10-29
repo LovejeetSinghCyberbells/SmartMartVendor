@@ -59,6 +59,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       backgroundColor={bg}
       textColor={fg}
       size={size}
+      showPulse={showDot}
+      pulseColor={dot}
       style={style}
       textStyle={textStyle}
     />

@@ -52,6 +52,14 @@ The user interface is engineered according to the official **SmartMart Green Des
 - **Secondary Accent (`#28A745`)**: Dynamic savings counters (`Save ₹X`) and live scanner reticle targeting.
 - **Neutral White (`#FFFFFF`)**: Clean cream/white cards, high-contrast typography, and invoice background.
 
+### Tactile Micro-Interactions & Animation Engine
+The application is infused with physics-driven native animations for an ultra-responsive, satisfying feel:
+- **`LivePulseBeacon`**: Radiating dual-wave radar beacon on active store statuses (`VendorHomeScreen`, `WorkingHoursScreen`) and incoming `NEW` order queue cards (`OrderCard`, `OrderStatusBadge`).
+- **`AnimatedSuccessCheckmark`**: Celebration spring pop with expanding halo ring when invoices are converted to PDF (`StoreBillingScreen`) and operational schedules saved.
+- **`CartBounceBadge`**: Elastic tactile counter bounce (`scale: 1 ➔ 1.45 ➔ 1`) whenever retail SKUs are added to the billing register.
+- **`AnimatedEntranceView`**: Staggered cascading entrances across list feeds, cards, and bottom sheets with natural damping and spring physics.
+- **`ShimmerLoadingCard`**: Smooth hardware-accelerated shimmer placeholder loaders.
+
 ---
 
 ## 2. Live Application Showcase
@@ -127,7 +135,7 @@ Explore genuine production screenshots captured directly from the **SmartMart Ve
 | 🏪 Store Profile & Operating Hours | 🕒 Working Hours Schedule |
 |:---:|:---:|
 | <img src="docs/assets/screenshots/10_store_profile_details.png" width="260" alt="Store Profile" /> | <img src="docs/assets/screenshots/11_working_hours_schedule.png" width="260" alt="Working Hours" /> |
-| **Branding & Identity**<br/>• Verified vendor badge<br/>• Store front photo & address<br/>• Emergency rush pause toggle | **Operational Schedule**<br/>• Monday - Sunday time slots<br/>• 1-tap "Apply All" schedule<br/>• Real-time open/close countdown |
+| **Branding & Identity**<br/>• Verified vendor badge<br/>• Store front photo & address<br/>• Emergency rush pause toggle | **Operational Schedule & Time Editor**<br/>• Interactive open/close time pickers<br/>• Afternoon break & closing buffer<br/>• Real-time countdown & 1-tap "Apply All" |
 
 </div>
 
@@ -453,7 +461,7 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 - `VendorSettingsScreen` (`src/features/settings/screens/VendorSettingsScreen.tsx`): Master settings dashboard.
 - `StoreProfileScreen` (`src/features/settings/screens/StoreProfileScreen.tsx`): Trading name, logo, GSTIN, FSSAI number.
 - `StoreAddressScreen` (`src/features/settings/screens/StoreAddressScreen.tsx`): GPS pinpoint and delivery fulfillment radius.
-- `WorkingHoursScreen` (`src/features/settings/screens/WorkingHoursScreen.tsx`): Operational schedule & emergency store rush pause.
+- `WorkingHoursScreen` (`src/features/settings/screens/WorkingHoursScreen.tsx`): Operational schedule editor, interactive open/close time dial picker, afternoon break slot, closing buffer time & holiday pause.
 - `CommissionRateScreen` (`src/features/settings/screens/CommissionRateScreen.tsx`): Platform commission and gateway fees breakdown.
 - `NotificationPreferencesScreen` (`src/features/settings/screens/NotificationPreferencesScreen.tsx`): High-volume siren and WhatsApp summary toggles.
 
@@ -469,7 +477,7 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 - `AddressScreen` & `AddEditAddressScreen`: Secondary warehouses and supplier pickup points.
 - `PaymentMethodsScreen`: Bank accounts for automated Razorpay settlements.
 - `NotificationsScreen`: Real-time notification inbox.
-- `SettingsScreen`: Multi-language selector (9 languages) and biometric lock settings.
+- `SettingsScreen`: Multi-language selector (English, Hindi, Punjabi, Gujarati, Marathi) with on-device translation and biometric lock settings.
 - `HelpScreen` & `LiveChatScreen`: 24/7 priority live chat support with partner operations.
 - `PrivacyPolicyScreen` & `TermsOfServiceScreen`: Statutory compliance and GST records guidelines.
 

@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto; display: block;" fill="none">
   <defs>
-    <!-- Brand Theme Gradients: SmartMart Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
+    <!-- SmartMart Brand Theme Gradients: Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
     <linearGradient id="scBgBrand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0B2817" />
-      <stop offset="50%" stop-color="#123B23" />
-      <stop offset="100%" stop-color="#071E10" />
+      <stop offset="0%" stop-color="#082113" />
+      <stop offset="50%" stop-color="#0F3820" />
+      <stop offset="100%" stop-color="#05170B" />
     </linearGradient>
 
     <linearGradient id="laserGradBrand" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -16,13 +16,13 @@
     </linearGradient>
 
     <linearGradient id="laserConeBrand" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#258B3E" stop-opacity="0.35" />
+      <stop offset="0%" stop-color="#258B3E" stop-opacity="0.3" />
       <stop offset="100%" stop-color="#258B3E" stop-opacity="0" />
     </linearGradient>
 
     <linearGradient id="cardGradBrand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#164828" />
-      <stop offset="100%" stop-color="#0E331B" />
+      <stop offset="0%" stop-color="#144627" />
+      <stop offset="100%" stop-color="#0D2E1A" />
     </linearGradient>
 
     <filter id="laserGlowBrand" x="-20%" y="-20%" width="140%" height="140%">
@@ -30,16 +30,9 @@
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
 
-    <filter id="cardGlowBrand" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.4" />
-    </filter>
-
     <style>
       .laser-sweep-beam {
         animation: animLaserSweep 2.4s infinite ease-in-out;
-      }
-      .reticle-corner-brand {
-        animation: animReticlePulse 2.4s infinite ease-in-out;
       }
       .transfer-stream-pulse {
         stroke-dasharray: 8 6;
@@ -54,17 +47,16 @@
       .card-verified-glow {
         animation: animCardBorderPulse 2.4s infinite ease-in-out;
       }
+      .camera-lens-dot {
+        animation: animCameraPulse 1.6s infinite ease-in-out;
+      }
 
       @keyframes animLaserSweep {
-        0% { transform: translateY(0px); opacity: 0.3; }
+        0% { opacity: 0.3; }
         45% { opacity: 1; }
-        55% { transform: translateY(80px); opacity: 1; }
+        55% { opacity: 1; }
         90% { opacity: 0.8; }
-        100% { transform: translateY(0px); opacity: 0.3; }
-      }
-      @keyframes animReticlePulse {
-        0%, 100% { stroke: #258B3E; stroke-width: 2.5; }
-        50% { stroke: #70DB8E; stroke-width: 3.5; }
+        100% { opacity: 0.3; }
       }
       @keyframes animTransferDash {
         to { stroke-dashoffset: -28; }
@@ -74,9 +66,13 @@
         100% { r: 24px; opacity: 0; stroke-width: 0.5; }
       }
       @keyframes animCardBorderPulse {
-        0%, 40% { stroke: #258B3E; }
-        55% { stroke: #70DB8E; }
-        70%, 100% { stroke: #258B3E; }
+        0%, 40% { stroke: #258B3E; stroke-width: 1.5; }
+        55% { stroke: #70DB8E; stroke-width: 2.2; }
+        70%, 100% { stroke: #258B3E; stroke-width: 1.5; }
+      }
+      @keyframes animCameraPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
       }
     </style>
   </defs>
@@ -84,9 +80,9 @@
   <!-- Outer Rounded Container (Brand Green Canvas) -->
   <rect width="920" height="280" rx="16" fill="url(#scBgBrand)" stroke="#258B3E" stroke-width="1.5" />
 
-  <!-- Top Status Header -->
-  <g transform="translate(32, 30)">
-    <circle cx="6" cy="6" r="4.5" fill="#258B3E" />
+  <!-- Top Status Header (Clear left/right margins) -->
+  <g transform="translate(32, 28)">
+    <circle class="camera-lens-dot" cx="6" cy="6" r="4.5" fill="#2ECC71" />
     <text x="18" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#EAF5ED" letter-spacing="1.2">
       HARDWARE CAMERA SCANNER ENGINE (60 FPS) • <tspan fill="#70DB8E">APP THEME: #258B3E</tspan>
     </text>
@@ -99,45 +95,47 @@
   </g>
 
   <!-- ==================== LEFT: CAMERA VIEWFINDER ==================== -->
-  <g transform="translate(32, 56)">
+  <g transform="translate(32, 54)">
     <!-- Viewfinder Background -->
-    <rect width="330" height="196" rx="12" fill="#05170B" stroke="#1A632C" stroke-width="1.2" />
+    <rect width="340" height="198" rx="12" fill="#05170B" stroke="#1A632C" stroke-width="1.2" />
 
     <!-- Corner Reticles (Targeting Brackets) -->
-    <path class="reticle-corner-brand" d="M 28 44 L 28 28 L 44 28" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
-    <path class="reticle-corner-brand" d="M 286 28 L 302 28 L 302 44" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
-    <path class="reticle-corner-brand" d="M 28 152 L 28 168 L 44 168" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
-    <path class="reticle-corner-brand" d="M 286 168 L 302 168 L 302 152" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M 28 44 L 28 28 L 44 28" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M 296 28 L 312 28 L 312 44" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M 28 152 L 28 168 L 44 168" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M 296 168 L 312 168 L 312 152" stroke="#258B3E" stroke-width="2.5" fill="none" stroke-linecap="round" />
 
-    <!-- EAN-13 Barcode Bars -->
-    <g transform="translate(72, 48)" fill="#EAF5ED">
+    <!-- Central Barcode Simulation (EAN-13: 8901262010158) -->
+    <g transform="translate(80, 52)" fill="#70DB8E">
+      <!-- Guard bars -->
       <rect x="0" y="0" width="3" height="74" />
-      <rect x="6" y="0" width="2" height="74" />
-      <rect x="12" y="0" width="5" height="66" />
-      <rect x="20" y="0" width="2" height="66" />
-      <rect x="25" y="0" width="6" height="66" />
-      <rect x="34" y="0" width="3" height="66" />
-      <rect x="42" y="0" width="2" height="66" />
-      <rect x="48" y="0" width="5" height="66" />
-      <rect x="58" y="0" width="3" height="66" />
-      <rect x="66" y="0" width="2" height="66" />
-      <rect x="74" y="0" width="4" height="66" />
+      <rect x="5" y="0" width="2" height="74" />
+      <!-- Left half -->
+      <rect x="13" y="0" width="4" height="66" />
+      <rect x="21" y="0" width="3" height="66" />
+      <rect x="28" y="0" width="5" height="66" />
+      <rect x="37" y="0" width="2" height="66" />
+      <rect x="43" y="0" width="6" height="66" />
+      <rect x="53" y="0" width="3" height="66" />
+      <rect x="60" y="0" width="2" height="66" />
+      <rect x="66" y="0" width="5" height="66" />
+      <rect x="75" y="0" width="3" height="66" />
       <rect x="82" y="0" width="2" height="66" />
       <!-- Center guard -->
       <rect x="88" y="0" width="3" height="74" />
-      <rect x="94" y="0" width="3" height="74" />
+      <rect x="93" y="0" width="3" height="74" />
       <!-- Right half -->
-      <rect x="102" y="0" width="4" height="66" />
-      <rect x="110" y="0" width="2" height="66" />
-      <rect x="116" y="0" width="6" height="66" />
-      <rect x="125" y="0" width="3" height="66" />
-      <rect x="132" y="0" width="5" height="66" />
-      <rect x="141" y="0" width="2" height="66" />
-      <rect x="147" y="0" width="4" height="66" />
-      <rect x="155" y="0" width="5" height="66" />
-      <rect x="164" y="0" width="3" height="66" />
-      <rect x="171" y="0" width="2" height="74" />
-      <rect x="176" y="0" width="3" height="74" />
+      <rect x="101" y="0" width="4" height="66" />
+      <rect x="109" y="0" width="2" height="66" />
+      <rect x="115" y="0" width="6" height="66" />
+      <rect x="124" y="0" width="3" height="66" />
+      <rect x="131" y="0" width="5" height="66" />
+      <rect x="140" y="0" width="2" height="66" />
+      <rect x="146" y="0" width="4" height="66" />
+      <rect x="154" y="0" width="5" height="66" />
+      <rect x="163" y="0" width="3" height="66" />
+      <rect x="170" y="0" width="2" height="74" />
+      <rect x="175" y="0" width="3" height="74" />
 
       <!-- Digits -->
       <text x="22" y="86" font-family="'Courier New', Courier, monospace" font-size="11.5" font-weight="800" fill="#C2E2CB" letter-spacing="4">
@@ -146,86 +144,97 @@
     </g>
 
     <!-- Animated Sweeping Laser Beam (Green #258B3E) -->
-    <g class="laser-sweep-beam" transform="translate(42, 44)">
-      <rect x="0" y="0" width="246" height="2.5" fill="url(#laserGradBrand)" filter="url(#laserGlowBrand)" />
-      <polygon points="0,0 246,0 216,16 30,16" fill="url(#laserConeBrand)" />
+    <g transform="translate(47, 44)">
+      <g class="laser-sweep-beam">
+        <animateTransform attributeName="transform" type="translate" values="0 0; 0 75; 0 0" keyTimes="0; 0.5; 1" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.3; 1; 1; 0.3" keyTimes="0; 0.45; 0.9; 1" dur="2.4s" repeatCount="indefinite" />
+        <rect x="0" y="0" width="246" height="2.5" fill="url(#laserGradBrand)" filter="url(#laserGlowBrand)" />
+        <polygon points="0,0 246,0 216,16 30,16" fill="url(#laserConeBrand)" />
+      </g>
     </g>
 
-    <text x="165" y="184" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#70DB8E">
+    <text x="170" y="184" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#70DB8E">
       Viewfinder active • Align barcode within green brackets
     </text>
   </g>
 
   <!-- ==================== CENTER: SIGNAL & AUDIO PING ==================== -->
-  <g transform="translate(382, 142)">
-    <circle class="beep-wave-1" cx="24" cy="0" r="10" stroke="#70DB8E" fill="none" />
-    <circle class="beep-wave-2" cx="24" cy="0" r="16" stroke="#258B3E" fill="none" />
-    <circle cx="24" cy="0" r="5" fill="#258B3E" />
+  <g transform="translate(388, 142)">
+    <circle class="beep-wave-1" cx="24" cy="0" r="10" stroke="#70DB8E" fill="none">
+      <animate attributeName="r" values="6; 24" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.9; 0" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
+    </circle>
+    <circle class="beep-wave-2" cx="24" cy="0" r="16" stroke="#258B3E" fill="none">
+      <animate attributeName="r" values="6; 24" dur="2.4s" begin="1.4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.9; 0" dur="2.4s" begin="1.4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="24" cy="0" r="5" fill="#2ECC71" />
 
     <line class="transfer-stream-pulse" x1="0" y1="0" x2="48" y2="0" stroke="#258B3E" stroke-width="3" stroke-linecap="round" />
-    <polygon points="50,0 42,-5 42,5" fill="#258B3E" />
+    <polygon points="52,0 44,-5 44,5" fill="#258B3E" />
     <text x="24" y="-14" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#70DB8E">
-      BEEP! ♫
+      BEEP! (SCAN OK)
     </text>
   </g>
 
   <!-- ==================== RIGHT: VERIFIED PRODUCT CARD ==================== -->
-  <g transform="translate(450, 56)">
+  <!-- Anchored stably at x=460, y=54. Width 428px. Perfectly balances 32px left/right margins. -->
+  <g transform="translate(460, 54)">
     <!-- Card Frame -->
-    <rect class="card-verified-glow" width="438" height="196" rx="12" fill="url(#cardGradBrand)" stroke="#258B3E" stroke-width="1.5" filter="url(#cardGlowBrand)" />
+    <rect class="card-verified-glow" width="428" height="198" rx="12" fill="url(#cardGradBrand)" stroke="#258B3E" stroke-width="1.5" />
 
-    <!-- Product Icon Container (Brand Light #EAF5ED with Vector Dairy Icon) -->
-    <rect x="18" y="18" width="60" height="60" rx="10" fill="#EAF5ED" />
-    <g transform="translate(32, 28)">
+    <!-- Product Icon Container (Brand Theme Styled Emerald Box: #0E331B, NOT stark white) -->
+    <rect x="18" y="18" width="56" height="56" rx="10" fill="#0A2D16" stroke="#258B3E" stroke-width="1.2" />
+    <g transform="translate(31, 26)">
       <!-- Vector Milk Bottle/Carton Icon -->
-      <path d="M12 4h8l3 4v22H9V8l3-4z" stroke="#1A632C" stroke-width="2" fill="none" stroke-linejoin="round" />
-      <line x1="12" y1="4" x2="20" y2="4" stroke="#1A632C" stroke-width="2" />
-      <line x1="9" y1="12" x2="23" y2="12" stroke="#258B3E" stroke-width="1.8" />
-      <circle cx="16" cy="20" r="3" fill="#258B3E" />
+      <path d="M12 4h6l3 4v22H9V8l3-4z" stroke="#70DB8E" stroke-width="2" fill="none" stroke-linejoin="round" />
+      <line x1="12" y1="4" x2="18" y2="4" stroke="#70DB8E" stroke-width="2" />
+      <line x1="9" y1="12" x2="21" y2="12" stroke="#258B3E" stroke-width="1.8" />
+      <circle cx="15" cy="20" r="3" fill="#2ECC71" />
     </g>
 
     <!-- Product Title & Details -->
-    <text x="90" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16.5" font-weight="800" fill="#FFFFFF">
+    <text x="86" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16.5" font-weight="800" fill="#FFFFFF">
       Amul Taaza Toned Milk
     </text>
-    <text x="90" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#C2E2CB">
+    <text x="86" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#C2E2CB">
       1 Litre Pouch • Dairy &amp; Fresh Chillers
     </text>
 
     <!-- Pricing Row (Selling Price, Struck MRP, Save Badge) -->
-    <g transform="translate(90, 72)">
+    <g transform="translate(86, 70)">
       <!-- Selling Price -->
-      <text x="0" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#70DB8E">
+      <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="900" fill="#70DB8E">
         ₹54.00
       </text>
       <!-- Struck MRP -->
-      <text x="94" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" fill="#9CA3AF" text-decoration="line-through">
+      <text x="90" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13.5" font-weight="500" fill="#9CA3AF" text-decoration="line-through">
         ₹58.00
       </text>
-      <!-- Save Badge Pill (Brand Light #EAF5ED with PrimaryDark #1A632C text) -->
-      <rect x="156" y="6" width="82" height="20" rx="6" fill="#EAF5ED" />
-      <text x="164" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#1A632C">
+      <!-- Save Badge Pill (Brand Theme Emerald #0A2D16 with Primary #258B3E stroke) -->
+      <rect x="150" y="5" width="86" height="20" rx="6" fill="#258B3E" />
+      <text x="157" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#FFFFFF">
         SAVE ₹4 (7%)
       </text>
     </g>
 
     <!-- Inventory Stock & Aisle Shelf Location Pill -->
-    <g transform="translate(18, 124)">
-      <rect width="402" height="28" rx="7" fill="#0A2414" stroke="#1A632C" stroke-width="0.8" />
+    <g transform="translate(18, 120)">
+      <rect width="392" height="28" rx="7" fill="#071E10" stroke="#1A632C" stroke-width="0.8" />
       <text x="14" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#EAF5ED">
         Stock: <tspan fill="#70DB8E" font-weight="800">24 Units</tspan> (Buffer &gt; 5) • Location: <tspan fill="#FFFFFF">Aisle 2, Dairy Chiller #1</tspan>
       </text>
     </g>
 
     <!-- Bottom Verified Pill (Brand Primary #258B3E) -->
-    <g transform="translate(18, 160)">
-      <rect width="402" height="24" rx="7" fill="#258B3E" fill-opacity="0.3" stroke="#258B3E" stroke-width="1.2" />
-      <circle cx="16" cy="12" r="4" fill="#70DB8E" />
-      <text x="28" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">
+    <g transform="translate(18, 156)">
+      <rect width="392" height="26" rx="7" fill="#258B3E" fill-opacity="0.3" stroke="#258B3E" stroke-width="1.2" />
+      <circle cx="16" cy="13" r="4" fill="#2ECC71" />
+      <text x="28" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="800" fill="#FFFFFF" letter-spacing="0.4">
         VERIFIED SKU • ADDED TO POS REGISTER CART (QTY: 1)
       </text>
-      <text x="388" y="16" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#70DB8E">
-        ✓ 100% MATCH
+      <text x="378" y="17" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#70DB8E">
+        ✓ MATCH
       </text>
     </g>
   </g>

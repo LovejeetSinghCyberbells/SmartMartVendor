@@ -680,16 +680,17 @@ export const BarcodeScannerScreen = ({ navigation, route }: any) => {
       {/* Scanned Result Bottom Sheet Modal */}
       {scannedResult && (
         <View style={styles.resultModalContainer}>
-          <View
-            style={[
-              styles.resultSheet,
-              {
-                paddingBottom: Math.max(insets.bottom, 12),
-                paddingLeft: Math.max(insets.left, 16),
-                paddingRight: Math.max(insets.right, 16),
-              },
-            ]}
-          >
+          <AnimatedEntranceView direction="up" bouncy={true} duration={320}>
+            <View
+              style={[
+                styles.resultSheet,
+                {
+                  paddingBottom: Math.max(insets.bottom, 12),
+                  paddingLeft: Math.max(insets.left, 16),
+                  paddingRight: Math.max(insets.right, 16),
+                },
+              ]}
+            >
             {/* Sheet Handle */}
             <View style={styles.sheetHandle} />
 
@@ -884,8 +885,9 @@ export const BarcodeScannerScreen = ({ navigation, route }: any) => {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
-      )}
+        </AnimatedEntranceView>
+      </View>
+    )}
     </View>
   );
 };

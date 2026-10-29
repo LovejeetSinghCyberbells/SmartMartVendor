@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, StyleSheet, ViewStyle, TextStyle, StyleProp } from 'react-native';
 import LocalizedText from '../../i18n/LocalizedText';
+import { LivePulseBeacon } from './LivePulseBeacon';
 
 export interface BadgeProps {
   label: string;
   backgroundColor?: string;
   textColor?: string;
   size?: 'sm' | 'md';
+  showPulse?: boolean;
+  pulseColor?: string;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
@@ -16,6 +19,8 @@ export const Badge: React.FC<BadgeProps> = ({
   backgroundColor = '#f3f4f6',
   textColor = '#6b7280',
   size = 'md',
+  showPulse = false,
+  pulseColor,
   style,
   textStyle,
 }) => {
@@ -28,6 +33,14 @@ export const Badge: React.FC<BadgeProps> = ({
         style,
       ]}
     >
+      {showPulse && (
+        <LivePulseBeacon
+          color={pulseColor || textColor}
+          size={5}
+          pulseRadius={9}
+          style={{ marginRight: 5 }}
+        />
+      )}
       <LocalizedText
         style={[
           styles.text,
@@ -44,6 +57,8 @@ export const Badge: React.FC<BadgeProps> = ({
 
 const styles = StyleSheet.create({
   badge: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 8,

@@ -23,6 +23,7 @@ const StockBadge: React.FC<Props> = ({ stock, lowThreshold = 10, size = 'md' }) 
     <StatusBadge
       label={`${label} (${stock})`}
       variant={variant}
+      showDot={stock === 0}
       size={size}
     />
   );

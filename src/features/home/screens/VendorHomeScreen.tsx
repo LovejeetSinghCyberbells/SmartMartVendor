@@ -6,13 +6,17 @@ import {
   ScrollView,
   StatusBar,
   Animated,
+  Text as NativeText,
 } from 'react-native';
 import TouchableOpacity from '../../../shared/components/AnimatedTouchableOpacity';
 import Icon from '@react-native-vector-icons/feather';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LocalizedText from '../../../shared/i18n/LocalizedText';
 import OrderStatusBadge from '../../orders/components/OrderStatusBadge';
-import { AnimatedEntranceView } from '../../../shared/components/common';
+import { AnimatedEntranceView, LivePulseBeacon, BottomSheet } from '../../../shared/components/common';
+import { useLocalization } from '../../../shared/i18n/LocalizationProvider';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../../../shared/i18n/languages';
+import { colors } from '../../../shared/theme/colors';
 import {
   VendorHomeSkeleton,
   useVendorEntranceAnimation,
@@ -41,7 +45,13 @@ const LOW_STOCK = [
 const VendorHomeScreen = ({ navigation }: any) => {
   const [isLoading, setIsLoading] = useState(true);
   const [storeOpen, setStoreOpen] = useState(true);
+  const [showLanguage, setShowLanguage] = useState(false);
   const insets = useSafeAreaInsets();
+  const { language, setLanguage } = useLocalization();
+
+  const currentLanguage =
+    SUPPORTED_LANGUAGES.find((l) => l.code === language) ??
+    SUPPORTED_LANGUAGES.find((l) => l.code === DEFAULT_LANGUAGE)!;
 
   const { headerStyle, getSectionStyle, getStatCardStyle, isHeaderLanded } =
     useVendorEntranceAnimation(isLoading, insets.top);
@@ -88,37 +98,49 @@ const VendorHomeScreen = ({ navigation }: any) => {
         {/* ===== HEADER ===== */}
         <Animated.View style={[styles.header, { paddingTop: insets.top + 10 }, headerStyle]}>
           <View style={styles.headerTop}>
-            <View>
+            <View style={{ flex: 1 }}>
               <LocalizedText style={styles.storeName}>Green Basket Kirana</LocalizedText>
               <LocalizedText style={styles.storeId}>Store ID: #TK-VB-8821</LocalizedText>
             </View>
 
-            <TouchableOpacity
-              style={[
-                styles.statusToggle,
-                { backgroundColor: storeOpen ? '#ffffff' : 'rgba(255,255,255,0.25)' },
-              ]}
-              scaleTo={0.92}
-              onPress={() => setStoreOpen(!storeOpen)}
-            >
-              <Animated.View
-                style={[
-                  styles.statusDot,
-                  {
-                    backgroundColor: storeOpen ? '#258B3E' : '#ef4444',
-                    transform: [{ scale: dotScale }],
-                  },
-                ]}
-              />
-              <LocalizedText
-                style={[
-                  styles.statusText,
-                  { color: storeOpen ? '#1a1a1a' : '#ffffff' },
-                ]}
+            <View style={styles.headerActions}>
+              <TouchableOpacity
+                style={styles.langButton}
+                scaleTo={0.90}
+                onPress={() => setShowLanguage(true)}
+                accessibilityLabel="Change Language"
               >
-                {storeOpen ? 'Open' : 'Closed'}
-              </LocalizedText>
-            </TouchableOpacity>
+                <Icon name="globe" size={13} color="#ffffff" style={{ marginRight: 4 }} />
+                <NativeText style={styles.langButtonText}>
+                  {currentLanguage.code.toUpperCase()}
+                </NativeText>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  styles.statusToggle,
+                  { backgroundColor: storeOpen ? '#ffffff' : 'rgba(255,255,255,0.25)' },
+                ]}
+                scaleTo={0.92}
+                onPress={() => setStoreOpen(!storeOpen)}
+              >
+                <LivePulseBeacon
+                  color={storeOpen ? '#258B3E' : '#ef4444'}
+                  size={8}
+                  pulseRadius={14}
+                  active={storeOpen}
+                  style={{ marginRight: 6 }}
+                />
+                <LocalizedText
+                  style={[
+                    styles.statusText,
+                    { color: storeOpen ? '#1a1a1a' : '#ffffff' },
+                  ]}
+                >
+                  {storeOpen ? 'Open' : 'Closed'}
+                </LocalizedText>
+              </TouchableOpacity>
+            </View>
           </View>
 
           {/* Quick Stats */}
@@ -265,6 +287,41 @@ const VendorHomeScreen = ({ navigation }: any) => {
 
         <View style={{ height: 30 }} />
       </ScrollView>
+
+      {/* ==================== QUICK LANGUAGE SELECTOR BOTTOM SHEET ==================== */}
+      <BottomSheet visible={showLanguage} onClose={() => setShowLanguage(false)}>
+        <LocalizedText style={styles.sheetHeading}>Select Language</LocalizedText>
+        <LocalizedText style={styles.sheetSubheading}>
+          Choose the language you are most comfortable with
+        </LocalizedText>
+
+        {SUPPORTED_LANGUAGES.map((lang) => {
+          const selected = lang.code === language;
+          return (
+            <TouchableOpacity
+              key={lang.code}
+              style={[styles.langRow, selected && styles.langRowSelected]}
+              scaleTo={0.96}
+              onPress={() => {
+                void setLanguage(lang.code)
+                  .then(() => setShowLanguage(false))
+                  .catch((error: unknown) => {
+                    console.error('Unable to update the app language.', error);
+                  });
+              }}
+            >
+              <View style={[styles.radioOuter, selected && styles.radioOuterSelected]}>
+                {selected && <View style={styles.radioInner} />}
+              </View>
+              <View style={{ flex: 1 }}>
+                <LocalizedText style={styles.langNative}>{lang.nativeName}</LocalizedText>
+                <NativeText style={styles.langLabel}>{lang.label}</NativeText>
+              </View>
+              {selected && <Icon name="check" size={18} color={colors.primary} />}
+            </TouchableOpacity>
+          );
+        })}
+      </BottomSheet>
     </View>
   );
 };
@@ -285,6 +342,28 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 18,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  langButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.22)',
+    paddingHorizontal: 9,
+    paddingVertical: 6,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.35)',
+  },
+  langButtonText: {
+    color: '#ffffff',
+    fontSize: 11,
+    fontFamily: 'Poppins-Bold',
+    fontWeight: '700',
+    letterSpacing: 0.5,
   },
   storeName: {
     fontSize: 20,
@@ -456,6 +535,65 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: 'Poppins-SemiBold',
     color: '#d97706',
+  },
+  sheetHeading: {
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+    fontWeight: '800',
+    color: '#1a1a1a',
+    marginBottom: 4,
+  },
+  sheetSubheading: {
+    fontSize: 13,
+    fontFamily: 'Poppins-Regular',
+    color: '#6b7280',
+    marginBottom: 20,
+  },
+  langRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: '#e5e7eb',
+    marginBottom: 10,
+    backgroundColor: '#ffffff',
+  },
+  langRowSelected: {
+    borderColor: colors.primary,
+    backgroundColor: colors.primaryLight,
+  },
+  radioOuter: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#d1d5db',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14,
+  },
+  radioOuterSelected: {
+    borderColor: colors.primary,
+  },
+  radioInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: colors.primary,
+  },
+  langNative: {
+    fontSize: 16,
+    fontFamily: 'Poppins-SemiBold',
+    fontWeight: '700',
+    color: '#1a1a1a',
+  },
+  langLabel: {
+    fontSize: 12,
+    fontFamily: 'Poppins-Regular',
+    color: '#6b7280',
+    marginTop: 1,
   },
 });
 

@@ -1,50 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto; display: block;" fill="none">
   <defs>
-    <!-- Brand Gradients: SmartMart Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
+    <!-- SmartMart Brand Gradients: Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
     <linearGradient id="pickBgBrand" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#082113" />
-      <stop offset="50%" stop-color="#0F331E" />
-      <stop offset="100%" stop-color="#06180D" />
+      <stop offset="50%" stop-color="#0F3820" />
+      <stop offset="100%" stop-color="#05170B" />
     </linearGradient>
 
     <linearGradient id="cardGradPick" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#164A29" />
-      <stop offset="100%" stop-color="#0E331B" />
+      <stop offset="0%" stop-color="#144627" />
+      <stop offset="100%" stop-color="#0D2E1A" />
     </linearGradient>
 
     <linearGradient id="cardGradHighlightPick" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#1E6136" />
-      <stop offset="100%" stop-color="#144626" />
+      <stop offset="100%" stop-color="#123B22" />
     </linearGradient>
 
-    <filter id="pickPhotonGlow" x="-30%" y="-30%" width="160%" height="160%">
+    <filter id="pickPhotonGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="3" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
 
     <style>
-      .conveyor-stream {
+      .pick-conveyor-stream {
         stroke-dasharray: 6 8;
-        animation: animConveyorDash 1.2s linear infinite;
+        animation: animPickDash 1.2s linear infinite;
       }
-      .tote-traveler-1 {
-        animation: animToteTravel 3s infinite linear;
+      .pick-tote-traveler {
+        animation: animPickTote 3s infinite linear;
       }
       .sla-timer-pulse {
         animation: animSlaBlink 1.5s infinite ease-in-out;
       }
-      .step-pick-border {
+      .pick-node-border {
         animation: animPickBorder 3s infinite ease-in-out;
       }
+      .pulse-beacon {
+        animation: animPulseBeacon 1.8s infinite ease-in-out;
+      }
 
-      @keyframes animConveyorDash {
+      @keyframes animPickDash {
         to { stroke-dashoffset: -28; }
       }
-      @keyframes animToteTravel {
-        0% { transform: translateX(0px); opacity: 0; }
+      @keyframes animPickTote {
+        0% { cx: 80px; opacity: 0; }
         10% { opacity: 1; }
         90% { opacity: 1; }
-        100% { transform: translateX(700px); opacity: 0; }
+        100% { cx: 780px; opacity: 0; }
       }
       @keyframes animSlaBlink {
         0%, 100% { fill: #F59E0B; }
@@ -52,17 +55,21 @@
       }
       @keyframes animPickBorder {
         0%, 100% { stroke: #258B3E; stroke-width: 1.2; }
-        50% { stroke: #70DB8E; stroke-width: 2; }
+        50% { stroke: #70DB8E; stroke-width: 1.8; }
+      }
+      @keyframes animPulseBeacon {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
       }
     </style>
   </defs>
 
-  <!-- Container -->
+  <!-- Container Box -->
   <rect width="920" height="220" rx="16" fill="url(#pickBgBrand)" stroke="#258B3E" stroke-width="1.5" />
 
-  <!-- Title Header -->
+  <!-- Top Title Header -->
   <g transform="translate(32, 28)">
-    <circle cx="6" cy="6" r="4.5" fill="#258B3E" />
+    <circle class="pulse-beacon" cx="6" cy="6" r="4.5" fill="#2ECC71" />
     <text x="18" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#EAF5ED" letter-spacing="1.2">
       OMNICHANNEL DARK STORE PICKING &amp; DISPATCH ENGINE • <tspan fill="#70DB8E">99.8% ACCURACY</tspan>
     </text>
@@ -75,92 +82,96 @@
   </g>
 
   <!-- Central Traveling Conveyor Line -->
-  <g transform="translate(90, 106)">
-    <line x1="0" y1="0" x2="740" y2="0" stroke="#103820" stroke-width="5" stroke-linecap="round" />
-    <line class="conveyor-stream" x1="0" y1="0" x2="740" y2="0" stroke="#258B3E" stroke-width="3" stroke-linecap="round" />
-    <circle class="tote-traveler-1" cx="0" cy="0" r="6" fill="#70DB8E" filter="url(#pickPhotonGlow)" />
+  <g transform="translate(0, 104)">
+    <line x1="80" y1="0" x2="840" y2="0" stroke="#0D2E1A" stroke-width="5" stroke-linecap="round" />
+    <line class="pick-conveyor-stream" x1="80" y1="0" x2="840" y2="0" stroke="#258B3E" stroke-width="3" stroke-linecap="round" />
+    <circle class="pick-tote-traveler" cy="0" r="6" fill="#70DB8E" filter="url(#pickPhotonGlow)">
+      <animate attributeName="cx" values="80; 780" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0; 1; 1; 0" keyTimes="0; 0.1; 0.9; 1" dur="3s" repeatCount="indefinite" />
+    </circle>
   </g>
 
   <!-- ==================== 5 PICKING WORKFLOW NODES ==================== -->
+  <!-- Card Width: 158px each, Gap: 16px. X-coords: 32, 206, 380, 554, 728 -->
 
-  <!-- NODE 1: Incoming Order & SLA -->
+  <!-- NODE 1: Incoming Order & SLA Alert -->
   <g transform="translate(32, 54)">
-    <rect class="step-pick-border" width="150" height="100" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
-    <rect x="12" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
-    <!-- Vector Notification Bell Icon -->
-    <path d="M26 19a4 4 0 0 0-4-4 4 4 0 0 0-4 4c0 4-2 5.5-2 5.5h12s-2-1.5-2-5.5zm-5 8a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z" fill="#1A632C" />
+    <rect class="pick-node-border" width="158" height="100" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
+    <!-- Sleek Emerald Container for Bell Icon (#0A2D16, NOT stark white) -->
+    <rect x="12" y="12" width="28" height="28" rx="8" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <path d="M26 19a4 4 0 0 0-4-4 4 4 0 0 0-4 4c0 4-2 5.5-2 5.5h12s-2-1.5-2-5.5zm-5 8a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z" fill="#70DB8E" />
     <text x="46" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">1. Order In</text>
     <text class="sla-timer-pulse" x="46" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">08:42 SLA</text>
     <text x="12" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Audible siren alert</text>
     <text x="12" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Ticket: #ORD-8821</text>
-    <circle cx="75" cy="100" r="4" fill="#258B3E" />
+    <circle cx="79" cy="100" r="4" fill="#258B3E" />
   </g>
 
   <!-- NODE 2: Shortest Aisle Route -->
-  <g transform="translate(212, 54)">
-    <rect class="step-pick-border" width="150" height="100" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
-    <rect x="12" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
-    <!-- Vector Map Route Icon -->
-    <circle cx="21" cy="21" r="2.5" fill="#1A632C" />
-    <circle cx="31" cy="30" r="2.5" fill="#1A632C" />
-    <path d="M21 23.5v3a2 2 0 0 0 2 2h6" stroke="#1A632C" stroke-width="1.6" fill="none" />
+  <g transform="translate(206, 54)">
+    <rect class="pick-node-border" width="158" height="100" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
+    <!-- Sleek Emerald Container for Map Route Icon -->
+    <rect x="12" y="12" width="28" height="28" rx="8" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <path d="M26 18a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4zm0 5.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#70DB8E" />
     <text x="46" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">2. Aisle Route</text>
     <text x="46" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#70DB8E">Shortest Path</text>
     <text x="12" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Aisle 2 (Dairy Chiller)</text>
     <text x="12" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Aisle 3 (Bakery)</text>
-    <circle cx="75" cy="100" r="4" fill="#258B3E" />
+    <circle cx="79" cy="100" r="4" fill="#258B3E" />
   </g>
 
   <!-- NODE 3: Barcode Verification -->
-  <g transform="translate(392, 54)">
-    <rect class="step-pick-border" width="150" height="100" rx="12" fill="url(#cardGradHighlightPick)" stroke="#70DB8E" stroke-width="1.5" />
-    <rect x="12" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
-    <!-- Vector Barcode Scanner Icon -->
-    <path d="M18 20h3v-2h-3a2 2 0 0 0-2 2v3h2v-3zm13-2h-3v2h3v3h2v-3a2 2 0 0 0-2-2zM16 28h2v3h3v2h-3a2 2 0 0 1-2-2v-3zm15 3h-3v2h3a2 2 0 0 0 2-2v-3h-2v3z" fill="#1A632C" />
+  <g transform="translate(380, 54)">
+    <rect class="pick-node-border" width="158" height="100" rx="12" fill="url(#cardGradHighlightPick)" stroke="#70DB8E" stroke-width="1.5" />
+    <!-- Sleek Emerald Container for Barcode Scan Icon -->
+    <rect x="12" y="12" width="28" height="28" rx="8" fill="#0A2D16" stroke="#70DB8E" stroke-width="1" />
+    <path d="M18 20h3v-2h-3a2 2 0 0 0-2 2v3h2v-3zm13-2h-3v2h3v3h2v-3a2 2 0 0 0-2-2zM16 28h2v3h3v2h-3a2 2 0 0 1-2-2v-3zm15 3h-3v2h3a2 2 0 0 0 2-2v-3h-2v3z" fill="#70DB8E" />
     <line x1="19" y1="26" x2="31" y2="26" stroke="#258B3E" stroke-width="1.5" />
     <text x="46" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#70DB8E">3. Barcode Scan</text>
     <text x="46" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#EAF5ED">Zero Errors</text>
     <text x="12" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#EAF5ED">Camera scan check</text>
     <text x="12" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#EAF5ED">Blocks wrong SKUs</text>
-    <circle cx="75" cy="100" r="4" fill="#70DB8E" />
+    <circle cx="79" cy="100" r="4" fill="#70DB8E" />
   </g>
 
   <!-- NODE 4: Staging Bay Allocation -->
-  <g transform="translate(572, 54)">
-    <rect class="step-pick-border" width="150" height="100" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
-    <rect x="12" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
-    <!-- Vector Package Box Icon -->
-    <path d="M26 19l6 3.5v7l-6 3.5-6-3.5v-7l6-3.5zm0 0v7m6-3.5l-6 3.5m-6-3.5l6 3.5" stroke="#1A632C" stroke-width="1.4" fill="none" stroke-linejoin="round" />
+  <g transform="translate(554, 54)">
+    <rect class="pick-node-border" width="158" height="100" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
+    <!-- Sleek Emerald Container for Package Box Icon -->
+    <rect x="12" y="12" width="28" height="28" rx="8" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <path d="M26 19l6 3.5v7l-6 3.5-6-3.5v-7l6-3.5zm0 0v7m6-3.5l-6 3.5m-6-3.5l6 3.5" stroke="#70DB8E" stroke-width="1.4" fill="none" stroke-linejoin="round" />
     <text x="46" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">4. Bag &amp; Stage</text>
     <text x="46" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#70DB8E">Bay Allocation</text>
     <text x="12" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Staging Bay #4</text>
     <text x="12" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Package Seal: #B-42</text>
-    <circle cx="75" cy="100" r="4" fill="#258B3E" />
+    <circle cx="79" cy="100" r="4" fill="#258B3E" />
   </g>
 
-  <!-- NODE 5: Rider OTP Handover -->
-  <g transform="translate(752, 54)">
-    <rect class="step-pick-border" width="136" height="100" rx="12" fill="url(#cardGradHighlightPick)" stroke="#258B3E" stroke-width="1.2" />
-    <rect x="12" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
-    <!-- Vector Scooter Delivery Rider Icon -->
-    <circle cx="21" cy="29" r="2.5" stroke="#1A632C" stroke-width="1.4" fill="none" />
-    <circle cx="31" cy="29" r="2.5" stroke="#1A632C" stroke-width="1.4" fill="none" />
-    <path d="M21 29h5l3-6h2m-6 3h3" stroke="#1A632C" stroke-width="1.4" stroke-linecap="round" fill="none" />
+  <!-- NODE 5: Rider Handover & OTP Verification -->
+  <g transform="translate(728, 54)">
+    <rect class="pick-node-border" width="160" height="100" rx="12" fill="url(#cardGradHighlightPick)" stroke="#258B3E" stroke-width="1.2" />
+    <!-- Sleek Emerald Container for Delivery Scooter Icon -->
+    <rect x="12" y="12" width="28" height="28" rx="8" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <circle cx="21" cy="29" r="2.5" stroke="#70DB8E" stroke-width="1.4" fill="none" />
+    <circle cx="31" cy="29" r="2.5" stroke="#70DB8E" stroke-width="1.4" fill="none" />
+    <path d="M21 29h5l3-6h2m-6 3h3" stroke="#70DB8E" stroke-width="1.4" stroke-linecap="round" fill="none" />
     <text x="46" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">5. Handover</text>
     <text x="46" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#70DB8E">4-Digit PIN</text>
     <text x="12" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Blinkit / Zepto</text>
     <text x="12" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="500" fill="#C2E2CB">Verified timestamp</text>
-    <circle cx="68" cy="100" r="4" fill="#258B3E" />
+    <circle cx="80" cy="100" r="4" fill="#258B3E" />
   </g>
 
-  <!-- Bottom Explanatory Summary Bar (Wide clearance: left text stops before right badge) -->
-  <g transform="translate(32, 172)">
+  <!-- Bottom Explanatory Summary Bar (Guaranteed Zero Overlap: text ends at x=475, badge starts at x=726) -->
+  <g transform="translate(32, 170)">
     <rect width="856" height="32" rx="8" fill="#0D2E1A" stroke="#1A632C" stroke-width="1" />
-    <text x="16" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#EAF5ED">
-      🎯 <tspan fill="#70DB8E" font-weight="800">99.8% Picking Accuracy</tspan> • Every SKU is barcode-verified during aisle transit to prevent wrong-item packing.
+    <circle cx="20" cy="16" r="6" stroke="#70DB8E" stroke-width="1.2" fill="none" />
+    <circle cx="20" cy="16" r="2.5" fill="#2ECC71" />
+    <text x="32" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#EAF5ED">
+      <tspan fill="#70DB8E" font-weight="800">99.8% Picking Accuracy</tspan> • Real-time barcode scan prevents wrong-item packing.
     </text>
-    <rect x="734" y="6" width="110" height="20" rx="10" fill="#1A632C" stroke="#258B3E" stroke-width="0.8" />
-    <text x="789" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#70DB8E">
+    <rect x="726" y="6" width="118" height="20" rx="10" fill="#1A632C" stroke="#258B3E" stroke-width="0.8" />
+    <text x="785" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#70DB8E">
       ZERO ERRORS ✓
     </text>
   </g>

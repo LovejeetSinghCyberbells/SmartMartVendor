@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useMemo } from 'react';
 import LocalizedText from '../../../shared/i18n/LocalizedText';
-import { View, StyleSheet, Image, Animated } from 'react-native';
+import { View, StyleSheet, Image, Animated, Easing, Dimensions } from 'react-native';
 import TouchableOpacity from '../../../shared/components/AnimatedTouchableOpacity';
 import Icon from '@react-native-vector-icons/feather';
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 interface OnboardingCardProps {
     title: string;
@@ -17,7 +19,8 @@ const OnboardingCard = ({ title, description, image, currentIndex, onNext, onSki
     const scaleAnim = useRef(new Animated.Value(1)).current;
     const arrowTranslateX = useRef(new Animated.Value(-60)).current;
     const arrowOpacity = useRef(new Animated.Value(0)).current;
-    const contentEntrance = useRef(new Animated.Value(0)).current;
+    // 0 = entering from right, 1 = settled active in center, 2 = exiting to left (pure sliding left, no fading)
+    const slideAnim = useRef(new Animated.Value(0)).current;
     const isAdvancing = useRef(false);
 
     const aspectRatio = useMemo(() => {
@@ -25,13 +28,26 @@ const OnboardingCard = ({ title, description, image, currentIndex, onNext, onSki
         return asset?.width && asset?.height ? asset.width / asset.height : 1;
     }, [image]);
 
+    // Horizontal sliding left ONLY (no fading/opacity changes)
+    const slideTranslateX = slideAnim.interpolate({
+        inputRange: [0, 1, 2],
+        outputRange: [SCREEN_WIDTH, 0, -SCREEN_WIDTH],
+    });
+
     useEffect(() => {
         isAdvancing.current = false;
         arrowTranslateX.setValue(-60);
         arrowOpacity.setValue(0);
-        contentEntrance.setValue(0);
+        slideAnim.setValue(0);
 
+        // Slide left into view (pure horizontal slide, 100% opacity)
         Animated.parallel([
+            Animated.timing(slideAnim, {
+                toValue: 1,
+                duration: 320,
+                easing: Easing.out(Easing.cubic),
+                useNativeDriver: true,
+            }),
             Animated.spring(arrowTranslateX, {
                 toValue: 0,
                 friction: 5,
@@ -40,16 +56,11 @@ const OnboardingCard = ({ title, description, image, currentIndex, onNext, onSki
             }),
             Animated.timing(arrowOpacity, {
                 toValue: 1,
-                duration: 300,
-                useNativeDriver: true,
-            }),
-            Animated.timing(contentEntrance, {
-                toValue: 1,
-                duration: 380,
+                duration: 280,
                 useNativeDriver: true,
             }),
         ]).start();
-    }, [currentIndex, arrowTranslateX, arrowOpacity, contentEntrance]);
+    }, [currentIndex, arrowTranslateX, arrowOpacity, slideAnim]);
 
     const handlePressIn = () => {
         Animated.spring(scaleAnim, {
@@ -73,20 +84,30 @@ const OnboardingCard = ({ title, description, image, currentIndex, onNext, onSki
         if (isAdvancing.current) return;
         isAdvancing.current = true;
 
+        // Slide left off-screen to -SCREEN_WIDTH (pure sliding left only), then advance to next slide
         Animated.parallel([
+            Animated.timing(slideAnim, {
+                toValue: 2,
+                duration: 250,
+                easing: Easing.in(Easing.cubic),
+                useNativeDriver: true,
+            }),
             Animated.timing(arrowTranslateX, {
                 toValue: 60,
-                duration: 260,
+                duration: 250,
                 useNativeDriver: true,
             }),
             Animated.timing(arrowOpacity, {
                 toValue: 0,
-                duration: 220,
+                duration: 200,
                 useNativeDriver: true,
             }),
         ]).start(({ finished }) => {
-            if (finished) onNext();
-            else isAdvancing.current = false;
+            if (finished) {
+                onNext();
+            } else {
+                isAdvancing.current = false;
+            }
         });
     };
 
@@ -107,13 +128,7 @@ const OnboardingCard = ({ title, description, image, currentIndex, onNext, onSki
                 style={[
                     styles.imageContainer,
                     {
-                        opacity: contentEntrance,
-                        transform: [{
-                            translateY: contentEntrance.interpolate({
-                                inputRange: [0, 1],
-                                outputRange: [18, 0],
-                            }),
-                        }],
+                        transform: [{ translateX: slideTranslateX }],
                     },
                 ]}
             >
@@ -128,13 +143,7 @@ const OnboardingCard = ({ title, description, image, currentIndex, onNext, onSki
                 style={[
                     styles.bottomCard,
                     {
-                        opacity: contentEntrance,
-                        transform: [{
-                            translateY: contentEntrance.interpolate({
-                                inputRange: [0, 1],
-                                outputRange: [22, 0],
-                            }),
-                        }],
+                        transform: [{ translateX: slideTranslateX }],
                     },
                 ]}
             >
@@ -176,6 +185,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ebf7ed',
         justifyContent: 'space-between',
+        overflow: 'hidden',
     },
     skipButton: {
         flexDirection: 'row',
@@ -230,6 +240,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 4,
     },
     activeDot: {
+        width: 22,
         backgroundColor: '#258B3E',
     },
     inactiveDot: {

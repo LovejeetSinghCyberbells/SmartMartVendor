@@ -373,8 +373,15 @@ Every screen in `SmartMartVendor` is engineered for lightning-fast touch interac
 - **Fields**: Latitude/Longitude GPS Pin, Store Door Number, Landmark, Delivery Fulfillment Radius in Kilometers (e.g. *5.0 km*).
 
 #### 32. `WorkingHoursScreen` (`src/features/settings/screens/WorkingHoursScreen.tsx`)
-- **Purpose**: Operational hours schedule.
-- **Fields**: Monday through Sunday Open/Close time pickers, Store Pause / Emergency Offline toggle (temporarily halts incoming online orders during heavy floor rush).
+- **Purpose**: Operational hours schedule, interactive time picker customization, closing order buffer, and holiday vacation mode.
+- **Key Features & Interactive Editing**:
+  - **Live Store Status Hero**: Real-time evaluation of whether the store is currently open, in lunch break, or closed, complete with live radar pulse and active order countdown.
+  - **Interactive Day-by-Day Time Picker**: Tapping any day's "Opens" or "Closes" chip opens an interactive modal with 12-hour dials, 15-minute stepping, AM/PM toggle, and quick common presets (`06:00 AM`, `08:00 AM`, `09:00 AM`, `10:00 PM`, `11:00 PM`).
+  - **Afternoon Lunch Break**: Optional break time slot per day (e.g., `02:00 PM` – `03:30 PM`) that dynamically deducts break duration from the total operating hours pill.
+  - **Apply to All Open Days**: 1-tap automation from both the main screen ("Apply Monday to All") and inside the time edit dialog to propagate custom timings across the entire workweek.
+  - **Closing Buffer Time Selector**: Configurable lead time (0, 15, 30, 45, 60 minutes) to halt new customer delivery orders before store close for smooth cash drawer reconciliation.
+  - **Vacation / Holiday Pause**: Toggle to temporarily suspend all customer order acceptance during festivals, holidays, or emergency store closures.
+  - **Storage & Synchronization**: Persisted offline in `@react-native-async-storage/async-storage` (`@smartmart_working_hours_schedule`) and synced with backend via `PUT /api/v1/store/working-hours`.
 
 #### 33. `CommissionRateScreen` (`src/features/settings/screens/CommissionRateScreen.tsx`)
 - **Purpose**: Transparent breakdown of marketplace commission tier, payment gateway fees (Razorpay / UPI), and merchant tier benefits.

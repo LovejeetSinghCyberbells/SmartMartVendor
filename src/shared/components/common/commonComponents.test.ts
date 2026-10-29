@@ -35,6 +35,10 @@ import {
   formatReadableDate,
   isSameDay,
   isDateInRange,
+  LivePulseBeacon,
+  AnimatedSuccessCheckmark,
+  CartBounceBadge,
+  ShimmerLoadingCard,
 } from './index';
 
 describe('Common Components Configuration & Registry', () => {
@@ -115,6 +119,13 @@ describe('Common Components Configuration & Registry', () => {
     expect(StatCard).toBeDefined();
     expect(SummaryRow).toBeDefined();
     expect(RadioOption).toBeDefined();
+  });
+
+  it('exports new interactive animated components cleanly (LivePulseBeacon, AnimatedSuccessCheckmark, CartBounceBadge, ShimmerLoadingCard)', () => {
+    expect(LivePulseBeacon).toBeDefined();
+    expect(AnimatedSuccessCheckmark).toBeDefined();
+    expect(CartBounceBadge).toBeDefined();
+    expect(ShimmerLoadingCard).toBeDefined();
   });
 
   it('provides calendar date picker and date utility helpers cleanly', () => {

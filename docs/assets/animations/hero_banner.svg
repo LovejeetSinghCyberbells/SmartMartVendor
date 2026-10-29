@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="100%" height="340" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto; display: block;" fill="none">
   <defs>
     <!-- Brand Gradients: SmartMart Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
     <linearGradient id="heroBgBrand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#072012" />
+      <stop offset="0%" stop-color="#06180D" />
       <stop offset="50%" stop-color="#0F3820" />
-      <stop offset="100%" stop-color="#05170B" />
+      <stop offset="100%" stop-color="#041208" />
     </linearGradient>
 
     <radialGradient id="heroGlowBrand" cx="20%" cy="15%" r="65%">
@@ -43,45 +43,24 @@
       .blink-dot-brand {
         animation: animPulseDot 2s infinite ease-in-out;
       }
-      .radar-sweep-brand {
-        animation: animRotateSweep 10s linear infinite;
-        transform-origin: 820px 70px;
-      }
       .wave-pulse-brand {
         animation: animWavePulse 2.8s infinite ease-out;
       }
-      .chip-float-1 {
-        animation: animFloatY1 4s infinite ease-in-out;
-      }
-      .chip-float-2 {
-        animation: animFloatY2 4.5s infinite ease-in-out;
-      }
-      .chip-float-3 {
-        animation: animFloatY1 5s infinite ease-in-out 0.5s;
-      }
-      .chip-float-4 {
-        animation: animFloatY2 4.2s infinite ease-in-out 1s;
+      .chip-card-pulse {
+        animation: animChipBorder 3s infinite ease-in-out;
       }
 
       @keyframes animPulseDot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.35; transform: scale(0.85); }
-      }
-      @keyframes animRotateSweep {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
       }
       @keyframes animWavePulse {
         0% { r: 12px; opacity: 0.8; }
         100% { r: 38px; opacity: 0; }
       }
-      @keyframes animFloatY1 {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-4px); }
-      }
-      @keyframes animFloatY2 {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
+      @keyframes animChipBorder {
+        0%, 100% { stroke: #258B3E; stroke-width: 1.2; }
+        50% { stroke: #70DB8E; stroke-width: 1.8; }
       }
     </style>
   </defs>
@@ -112,16 +91,18 @@
   <!-- Radar Status Orb (Top Right) -->
   <g transform="translate(820, 70)">
     <circle cx="0" cy="0" r="16" fill="#1A632C" opacity="0.6" />
-    <circle class="wave-pulse-brand" cx="0" cy="0" r="14" stroke="#258B3E" stroke-width="1.5" fill="none" />
-    <circle cx="0" cy="0" r="6" fill="#258B3E" />
-    <line class="radar-sweep-brand" x1="0" y1="0" x2="42" y2="0" stroke="#70DB8E" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+    <circle class="wave-pulse-brand" cx="0" cy="0" r="14" stroke="#258B3E" stroke-width="1.5" fill="none">
+      <animate attributeName="r" values="12; 38" dur="2.8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8; 0" dur="2.8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="0" r="6" fill="#2ECC71" />
   </g>
 
-  <!-- Status Pill Header (Brand Colors) -->
+  <!-- Top System Badge Pill -->
   <g transform="translate(50, 42)">
-    <rect width="320" height="30" rx="15" fill="#EAF5ED" stroke="#258B3E" stroke-width="1.2" />
-    <circle class="blink-dot-brand" cx="16" cy="15" r="4.5" fill="#258B3E" />
-    <text x="30" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#1A632C" letter-spacing="1.2">SMARTMART VENDOR OS • v2.4.0</text>
+    <rect width="316" height="30" rx="15" fill="#0C2E1A" stroke="#258B3E" stroke-width="1" />
+    <circle class="blink-dot-brand" cx="20" cy="15" r="5" fill="#2ECC71" />
+    <text x="34" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#EAF5ED" letter-spacing="1">SMARTMART VENDOR OS • v2.4.0</text>
     <rect x="246" y="6" width="62" height="18" rx="9" fill="#258B3E" />
     <text x="256" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">ONLINE</text>
   </g>
@@ -137,39 +118,45 @@
   <!-- Glowing Accent Divider Line -->
   <rect x="50" y="180" width="820" height="2" fill="url(#heroLineGrad)" />
 
-  <!-- 4 Feature Cards (Chips) -->
+  <!-- 4 Feature Cards (Chips) - Symmetrically Spaced at x=50, 258, 466, 674 -->
   <!-- Chip 1: 10s Instant Checkout -->
-  <g class="chip-float-1" transform="translate(50, 204)">
-    <rect width="192" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
-    <rect x="12" y="14" width="38" height="38" rx="9" fill="#EAF5ED" />
-    <text x="21" y="40" font-size="20">⚡</text>
+  <g transform="translate(50, 204)">
+    <rect class="chip-card-pulse" width="192" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
+    <!-- Sleek Emerald Container (#0A2D16, NOT stark white) -->
+    <rect x="12" y="14" width="38" height="38" rx="9" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <polygon points="31,22 23,33 29,33 27,44 37,31 31,31" fill="#70DB8E" />
     <text x="60" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">10s Checkout</text>
     <text x="60" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#C2E2CB">Zero wait queues</text>
   </g>
 
   <!-- Chip 2: On-Device PDF Generator -->
-  <g class="chip-float-2" transform="translate(258, 204)">
-    <rect width="192" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
-    <rect x="12" y="14" width="38" height="38" rx="9" fill="#EAF5ED" />
-    <text x="21" y="40" font-size="20">📄</text>
+  <g transform="translate(258, 204)">
+    <rect class="chip-card-pulse" width="192" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
+    <!-- Sleek Emerald Container -->
+    <rect x="12" y="14" width="38" height="38" rx="9" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <path d="M24 24h9l4 4v12a1.5 1.5 0 0 1-1.5 1.5H24A1.5 1.5 0 0 1 22.5 40V25.5A1.5 1.5 0 0 1 24 24z" stroke="#70DB8E" stroke-width="1.6" fill="none" />
+    <line x1="26" y1="31" x2="33" y2="31" stroke="#70DB8E" stroke-width="1.3" />
+    <line x1="26" y1="35" x2="31" y2="35" stroke="#70DB8E" stroke-width="1.3" />
     <text x="60" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">Vector Tax PDF</text>
     <text x="60" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#C2E2CB">On-device local</text>
   </g>
 
   <!-- Chip 3: WhatsApp GST Invoicing -->
-  <g class="chip-float-3" transform="translate(466, 204)">
-    <rect width="192" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
-    <rect x="12" y="14" width="38" height="38" rx="9" fill="#EAF5ED" />
-    <text x="21" y="40" font-size="20">💬</text>
+  <g transform="translate(466, 204)">
+    <rect class="chip-card-pulse" width="192" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
+    <!-- Sleek Emerald Container -->
+    <rect x="12" y="14" width="38" height="38" rx="9" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <path d="M33 24a6 6 0 0 0-5.3 8.8L26 37l4.3-1.3A6 6 0 1 0 33 24z" stroke="#25D366" stroke-width="1.6" fill="none" stroke-linejoin="round" />
     <text x="60" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">Direct WhatsApp</text>
     <text x="60" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#C2E2CB">Zero paper rolls</text>
   </g>
 
   <!-- Chip 4: 100% Offline-First Engine -->
-  <g class="chip-float-4" transform="translate(674, 204)">
-    <rect width="196" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
-    <rect x="12" y="14" width="38" height="38" rx="9" fill="#EAF5ED" />
-    <text x="21" y="40" font-size="20">📶</text>
+  <g transform="translate(674, 204)">
+    <rect class="chip-card-pulse" width="196" height="68" rx="12" fill="url(#heroCardGrad)" stroke="#258B3E" stroke-width="1.2" filter="url(#heroDropShadow)" />
+    <!-- Sleek Emerald Container -->
+    <rect x="12" y="14" width="38" height="38" rx="9" fill="#0A2D16" stroke="#258B3E" stroke-width="1" />
+    <path d="M23 39h2.5v-3H23v3zm4.5 0H30v-7h-2.5v7zm4.5 0h2.5v-11H32v11zm4.5 0H39v-15h-2.5v15z" fill="#70DB8E" />
     <text x="60" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">100% Offline-First</text>
     <text x="60" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#C2E2CB">Autonomous SQLite</text>
   </g>

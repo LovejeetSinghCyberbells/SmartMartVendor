@@ -7,15 +7,18 @@ import {
   Animated,
   Easing,
   Platform,
+  Text as NativeText,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '@react-native-vector-icons/feather';
 import LocalizedText from '../../../shared/i18n/LocalizedText';
 import TouchableOpacity from '../../../shared/components/AnimatedTouchableOpacity';
-import { AnimatedEntranceView, Avatar, ListItem, Divider } from '../../../shared/components/common';
+import { AnimatedEntranceView, Avatar, ListItem, Divider, BottomSheet } from '../../../shared/components/common';
 import LogoutBottomSheet from '../components/LogoutBottomSheet';
 import ImagePath from '../../../shared/constants/ImagePath';
 import { colors } from '../../../shared/theme/colors';
+import { useLocalization } from '../../../shared/i18n/LocalizationProvider';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../../../shared/i18n/languages';
 
 const APP_VERSION = 'SmartMart Vendor • v1.0.0 (Build 24)';
 
@@ -154,6 +157,12 @@ export const ProfileScreen = ({ navigation }: any) => {
   const insets = useSafeAreaInsets();
   const [showLogout, setShowLogout] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [showLanguage, setShowLanguage] = useState(false);
+  const { language, setLanguage } = useLocalization();
+
+  const currentLanguage =
+    SUPPORTED_LANGUAGES.find((l) => l.code === language) ??
+    SUPPORTED_LANGUAGES.find((l) => l.code === DEFAULT_LANGUAGE)!;
 
   // Vendor Data
   const vendor = {
@@ -220,13 +229,27 @@ export const ProfileScreen = ({ navigation }: any) => {
       {/* Screen Header */}
       <View style={styles.header}>
         <LocalizedText style={styles.headerTitle}>Vendor Profile</LocalizedText>
-        <TouchableOpacity
-          style={styles.headerSettingsBtn}
-          scaleTo={0.88}
-          onPress={() => navigation.navigate('VendorSettings')}
-        >
-          <Icon name="settings" size={20} color={colors.textPrimary} />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <TouchableOpacity
+            style={styles.langHeaderBtn}
+            scaleTo={0.88}
+            onPress={() => setShowLanguage(true)}
+            accessibilityLabel="Change Language"
+          >
+            <Icon name="globe" size={14} color={colors.primary} style={{ marginRight: 4 }} />
+            <NativeText style={styles.langHeaderText}>
+              {currentLanguage.code.toUpperCase()}
+            </NativeText>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.headerSettingsBtn}
+            scaleTo={0.88}
+            onPress={() => navigation.navigate('VendorSettings')}
+            accessibilityLabel="Settings"
+          >
+            <Icon name="settings" size={20} color={colors.textPrimary} />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <ScrollView
@@ -375,6 +398,41 @@ export const ProfileScreen = ({ navigation }: any) => {
         onConfirm={handleLogout}
         loading={loggingOut}
       />
+
+      {/* Language selection sheet */}
+      <BottomSheet visible={showLanguage} onClose={() => setShowLanguage(false)}>
+        <LocalizedText style={styles.sheetHeading}>Select Language</LocalizedText>
+        <LocalizedText style={styles.sheetSubheading}>
+          Choose the language you are most comfortable with
+        </LocalizedText>
+
+        {SUPPORTED_LANGUAGES.map((lang) => {
+          const selected = lang.code === language;
+          return (
+            <TouchableOpacity
+              key={lang.code}
+              style={[styles.langRow, selected && styles.langRowSelected]}
+              scaleTo={0.96}
+              onPress={() => {
+                void setLanguage(lang.code)
+                  .then(() => setShowLanguage(false))
+                  .catch((error: unknown) => {
+                    console.error('Unable to update the app language.', error);
+                  });
+              }}
+            >
+              <View style={[styles.radioOuter, selected && styles.radioOuterSelected]}>
+                {selected && <View style={styles.radioInner} />}
+              </View>
+              <View style={{ flex: 1 }}>
+                <LocalizedText style={styles.langNative}>{lang.nativeName}</LocalizedText>
+                <NativeText style={styles.langLabel}>{lang.label}</NativeText>
+              </View>
+              {selected && <Icon name="check" size={18} color={colors.primary} />}
+            </TouchableOpacity>
+          );
+        })}
+      </BottomSheet>
     </View>
   );
 };
@@ -399,6 +457,23 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     color: colors.textPrimary,
   },
+  langHeaderBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.primaryLight,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#c6e8ce',
+  },
+  langHeaderText: {
+    color: colors.primary,
+    fontSize: 12,
+    fontFamily: 'Poppins-Bold',
+    fontWeight: '700',
+    letterSpacing: 0.5,
+  },
   headerSettingsBtn: {
     width: 40,
     height: 40,
@@ -406,6 +481,65 @@ const styles = StyleSheet.create({
     backgroundColor: '#f3f4f6',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  sheetHeading: {
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+    fontWeight: '800',
+    color: '#1a1a1a',
+    marginBottom: 4,
+  },
+  sheetSubheading: {
+    fontSize: 13,
+    fontFamily: 'Poppins-Regular',
+    color: '#6b7280',
+    marginBottom: 20,
+  },
+  langRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: '#e5e7eb',
+    marginBottom: 10,
+    backgroundColor: '#ffffff',
+  },
+  langRowSelected: {
+    borderColor: colors.primary,
+    backgroundColor: colors.primaryLight,
+  },
+  radioOuter: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#d1d5db',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14,
+  },
+  radioOuterSelected: {
+    borderColor: colors.primary,
+  },
+  radioInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: colors.primary,
+  },
+  langNative: {
+    fontSize: 16,
+    fontFamily: 'Poppins-SemiBold',
+    fontWeight: '700',
+    color: '#1a1a1a',
+  },
+  langLabel: {
+    fontSize: 12,
+    fontFamily: 'Poppins-Regular',
+    color: '#6b7280',
+    marginTop: 1,
   },
   scrollContent: {
     paddingHorizontal: 16,

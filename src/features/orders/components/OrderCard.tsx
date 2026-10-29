@@ -5,6 +5,7 @@ import Icon from '@react-native-vector-icons/feather';
 import LocalizedText from '../../../shared/i18n/LocalizedText';
 import OrderStatusBadge from './OrderStatusBadge';
 import Badge from '../../../shared/components/common/Badge';
+import { LivePulseBeacon } from '../../../shared/components/common/LivePulseBeacon';
 
 interface Order {
   id: string;
@@ -27,7 +28,12 @@ const OrderCard: React.FC<Props> = ({ order, onPress }) => {
     <TouchableOpacity style={styles.card} activeOpacity={0.85} onPress={onPress}>
       <View style={styles.topRow}>
         <View>
-          <LocalizedText style={styles.orderId}>{order.orderId}</LocalizedText>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <LocalizedText style={styles.orderId}>{order.orderId}</LocalizedText>
+            {order.status === 'NEW' && (
+              <LivePulseBeacon color="#EF4444" size={7} pulseRadius={12} style={{ marginLeft: 6 }} />
+            )}
+          </View>
           <LocalizedText style={styles.customer}>{order.customerName}</LocalizedText>
         </View>
         <OrderStatusBadge status={order.status} />

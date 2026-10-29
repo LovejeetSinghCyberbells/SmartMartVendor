@@ -23,6 +23,8 @@ import {
   SearchBar,
   Badge,
   AnimatedEntranceView,
+  CartBounceBadge,
+  AnimatedSuccessCheckmark,
 } from '../../../shared/components/common';
 import { useStaffRole } from '../../team';
 import { useFeedback } from '../../../shared/components/feedback/FeedbackProvider';
@@ -786,6 +788,9 @@ export const StoreBillingScreen: React.FC<{ navigation?: any; isTab?: boolean }>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Icon name="shopping-cart" size={18} color={colors.primary} style={{ marginRight: 8 }} />
                 <LocalizedText style={styles.sectionTitle}>Current Bill Items</LocalizedText>
+                {totalItemsCount > 0 && (
+                  <CartBounceBadge count={totalItemsCount} backgroundColor={colors.primary} size={20} style={{ marginLeft: 8 }} />
+                )}
               </View>
               <Badge
                 label={`${totalItemsCount} items`}
@@ -1051,6 +1056,14 @@ export const StoreBillingScreen: React.FC<{ navigation?: any; isTab?: boolean }>
       >
         <View style={styles.modalOverlay}>
           <View style={styles.receiptContainer}>
+            {/* Animated Celebration Pop */}
+            <View style={{ alignItems: 'center', marginBottom: 14 }}>
+              <AnimatedSuccessCheckmark size={52} color={colors.primary} />
+              <LocalizedText style={{ fontSize: 16, fontFamily: 'Poppins-Bold', color: colors.primaryDark, marginTop: 4 }}>
+                Bill Generated Successfully!
+              </LocalizedText>
+            </View>
+
             {/* Converted Document Representation Card */}
             {lastBill && (
               <View style={styles.documentFileCard}>
