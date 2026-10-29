@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 230" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" fill="none">
   <defs>
     <!-- Brand Gradients: SmartMart Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
     <linearGradient id="pagerBgBrand" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -50,29 +50,30 @@
   </defs>
 
   <!-- Container -->
-  <rect width="920" height="220" rx="16" fill="url(#pagerBgBrand)" stroke="#258B3E" stroke-width="1.5" />
+  <rect width="920" height="230" rx="16" fill="url(#pagerBgBrand)" stroke="#258B3E" stroke-width="1.5" />
 
   <!-- Title Header -->
-  <g transform="translate(36, 28)">
+  <g transform="translate(32, 28)">
     <circle cx="6" cy="6" r="4.5" fill="#258B3E" />
     <text x="18" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#EAF5ED" letter-spacing="1.2">
       HARDWARE-FREE STORE FLOOR PAGER &amp; INTERCOM • <tspan fill="#70DB8E">ZERO WALKIE-TALKIES</tspan>
     </text>
   </g>
-  <g transform="translate(730, 28)">
-    <rect width="154" height="22" rx="11" fill="#1A632C" stroke="#258B3E" stroke-width="0.8" />
-    <text x="77" y="15" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#EAF5ED">
+  <g transform="translate(730, 20)">
+    <rect width="158" height="22" rx="11" fill="#1A632C" stroke="#258B3E" stroke-width="0.8" />
+    <text x="79" y="15" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#EAF5ED">
       LATENCY: &lt; 50ms (WSS)
     </text>
   </g>
 
   <!-- ==================== LEFT: CASHIER TERMINAL ==================== -->
-  <g transform="translate(36, 56)">
-    <rect width="330" height="136" rx="12" fill="url(#pagerCardCashier)" stroke="#258B3E" stroke-width="1.2" />
+  <g transform="translate(32, 54)">
+    <rect width="330" height="152" rx="12" fill="url(#pagerCardCashier)" stroke="#258B3E" stroke-width="1.2" />
     <!-- Header -->
     <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
-    <text x="21" y="31" font-size="14">📢</text>
-    <text x="48" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">
+    <!-- Vector Megaphone Speaker Icon -->
+    <path d="M19 23v4h2l4 3v-10l-4 3h-2zm9-3a4 4 0 0 1 0 6m2-8a6.5 6.5 0 0 1 0 10" stroke="#1A632C" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <text x="48" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="800" fill="#FFFFFF">
       Counter #2 Cashier Desk
     </text>
     <text x="48" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#70DB8E">
@@ -80,76 +81,82 @@
     </text>
 
     <!-- Request Details Box -->
-    <g transform="translate(14, 52)">
-      <rect width="302" height="42" rx="8" fill="#092112" stroke="#1A632C" stroke-width="0.8" />
-      <text x="12" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#EAF5ED">
+    <g transform="translate(14, 50)">
+      <rect width="302" height="48" rx="8" fill="#092112" stroke="#1A632C" stroke-width="0.8" />
+      <text x="12" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#EAF5ED">
         Reason: <tspan fill="#F59E0B">Price Override (Bulk Order)</tspan>
       </text>
-      <text x="12" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">
+      <text x="12" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">
         Location: Billing Counter 2 • Customer Waiting
       </text>
     </g>
 
-    <!-- Urgent Dispatch Status -->
-    <g transform="translate(14, 102)">
-      <rect width="302" height="22" rx="6" fill="#DC2626" fill-opacity="0.25" stroke="#DC2626" stroke-width="0.8" />
-      <text x="151" y="15" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#FCA5A5" letter-spacing="0.5">
-        🚨 SUMMON SENT • TRANSMITTING TO FLOOR MANAGERS
+    <!-- Urgent Dispatch Status Pill -->
+    <g transform="translate(14, 108)">
+      <rect width="302" height="26" rx="6" fill="#DC2626" fill-opacity="0.25" stroke="#DC2626" stroke-width="0.8" />
+      <circle cx="16" cy="13" r="3.5" fill="#EF4444" />
+      <text x="26" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="800" fill="#FCA5A5" letter-spacing="0.3">
+        SUMMON SENT • TRANSMITTING TO MANAGERS
+      </text>
+      <text x="290" y="17" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#70DB8E">
+        ACTIVE
       </text>
     </g>
   </g>
 
   <!-- ==================== CENTER: WEBSOCKET & HAPTIC SIGNAL ==================== -->
-  <g transform="translate(390, 124)">
+  <g transform="translate(382, 130)">
     <!-- Expanding Soundwave Rings -->
-    <circle class="soundwave-pulse-1" cx="40" cy="0" r="16" stroke="#258B3E" fill="none" />
-    <circle class="soundwave-pulse-2" cx="40" cy="0" r="26" stroke="#70DB8E" fill="none" />
-    <circle class="soundwave-pulse-3" cx="40" cy="0" r="36" stroke="#258B3E" fill="none" />
-    <circle cx="40" cy="0" r="8" fill="#258B3E" />
+    <circle class="soundwave-pulse-1" cx="42" cy="0" r="16" stroke="#258B3E" fill="none" />
+    <circle class="soundwave-pulse-2" cx="42" cy="0" r="26" stroke="#70DB8E" fill="none" />
+    <circle class="soundwave-pulse-3" cx="42" cy="0" r="36" stroke="#258B3E" fill="none" />
+    <circle cx="42" cy="0" r="8" fill="#258B3E" />
 
     <!-- Pulse Line -->
-    <line class="pager-stream" x1="0" y1="0" x2="80" y2="0" stroke="#70DB8E" stroke-width="3" stroke-linecap="round" />
-    <polygon points="84,0 74,-6 74,6" fill="#70DB8E" />
+    <line class="pager-stream" x1="0" y1="0" x2="84" y2="0" stroke="#70DB8E" stroke-width="3" stroke-linecap="round" />
+    <polygon points="88,0 78,-5 78,5" fill="#70DB8E" />
 
-    <text x="40" y="-22" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="800" fill="#EAF5ED">
+    <text x="42" y="-22" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="800" fill="#EAF5ED">
       HAPTIC BUZZ
     </text>
-    <text x="40" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" fill="#C2E2CB">
+    <text x="42" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" fill="#C2E2CB">
       WebSocket WSS
     </text>
   </g>
 
   <!-- ==================== RIGHT: STORE MANAGER POPUP OVERLAY ==================== -->
-  <g transform="translate(490, 56)">
-    <rect width="394" height="136" rx="12" fill="url(#pagerCardManager)" stroke="#258B3E" stroke-width="1.5" />
+  <g transform="translate(488, 54)">
+    <rect width="400" height="152" rx="12" fill="url(#pagerCardManager)" stroke="#258B3E" stroke-width="1.5" />
+
     <!-- Alert Header Banner -->
-    <rect class="alert-pill-pulse" x="14" y="12" width="94" height="22" rx="6" fill="#DC2626" />
-    <text x="61" y="27" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="900" fill="#FFFFFF" letter-spacing="0.5">
-      🚨 URGENT PAGER
+    <rect class="alert-pill-pulse" x="14" y="12" width="100" height="22" rx="6" fill="#DC2626" />
+    <text x="64" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="900" fill="#FFFFFF" letter-spacing="0.5">
+      URGENT PAGER
     </text>
 
-    <text x="116" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">
+    <text x="122" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">
       Rahul Sharma (Store Manager)
     </text>
 
     <!-- Overlay Body Card -->
-    <g transform="translate(14, 42)">
-      <rect width="366" height="48" rx="8" fill="#0C2616" stroke="#1A632C" stroke-width="0.8" />
-      <text x="14" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">
+    <g transform="translate(14, 44)">
+      <rect width="372" height="52" rx="8" fill="#0C2616" stroke="#1A632C" stroke-width="0.8" />
+      <text x="14" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#FFFFFF">
         Summon: Counter 2 Cashier Desk
       </text>
-      <text x="14" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="500" fill="#C2E2CB">
+      <text x="14" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">
         "Cashier needs manager PIN override for 15% wholesale discount."
       </text>
     </g>
 
     <!-- 1-Tap Acknowledge Button (Brand Primary #258B3E) -->
-    <g transform="translate(14, 98)">
-      <rect width="366" height="26" rx="7" fill="#258B3E" />
-      <text x="183" y="17" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">
-        ✓ ACKNOWLEDGE &amp; ON MY WAY (COUNTER 2)
+    <g transform="translate(14, 106)">
+      <rect width="372" height="30" rx="7" fill="#258B3E" />
+      <!-- Vector Checkmark -->
+      <path d="M120 121l3 3 6-6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="186" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">
+        ACKNOWLEDGE &amp; ON MY WAY (COUNTER 2)
       </text>
     </g>
   </g>
 </svg>
-

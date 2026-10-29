@@ -7,7 +7,7 @@
 
 [![React Native](https://img.shields.io/badge/React_Native-0.88.0_TurboModules-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactnative.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![App Theme](https://img.shields.io/badge/Brand_Color-%23258B3E-258B3E?style=for-the-badge&logo=materialdesign&logoColor=white)](#app-theme-tokens)
+[![App Theme](https://img.shields.io/badge/Brand_Color-%23258B3E-258B3E?style=for-the-badge&logo=materialdesign&logoColor=white)](#mobile-app-design-system--brand-palette)
 [![Platforms](https://img.shields.io/badge/Platforms-iOS_14+_|_Android_7+-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://reactnative.dev)
 [![Offline First](https://img.shields.io/badge/Engine-100%25_Offline--First-258B3E?style=for-the-badge&logo=sqlite&logoColor=white)](#7-offline-first-resilience--catalog-cache)
 [![WhatsApp Business](https://img.shields.io/badge/Invoicing-WhatsApp_Direct_PDF-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](#3-the-10-second-checkout-pipeline)
@@ -56,7 +56,7 @@ The user interface is engineered according to the official **SmartMart Green Des
 
 ## 2. Live Application Showcase
 
-Explore genuine production screenshots captured directly from the **SmartMart Vendor** application running on physical iPhone hardware:
+Explore genuine production screenshots captured directly from the **SmartMart Vendor** application running on physical iPhone hardware, organized into fully responsive 2-column and 3-column galleries:
 
 ### Module A: In-Store POS Billing & Live Inventory Management
 
@@ -101,10 +101,15 @@ Explore genuine production screenshots captured directly from the **SmartMart Ve
 
 <div align="center">
 
-| 🛒 Online Orders Specialist Floor | 🔒 Role Permissions Matrix | 📋 Standard Operating Procedures | 📈 Employee Work Analytics |
-|:---:|:---:|:---:|:---:|
-| <img src="docs/assets/screenshots/20_employee_home_picker.png" width="200" alt="Orders Specialist Home" /> | <img src="docs/assets/screenshots/21_role_permissions_detail.png" width="200" alt="Role Permissions Matrix" /> | <img src="docs/assets/screenshots/23_instore_sop_safety.png" width="200" alt="Store SOP Guidelines" /> | <img src="docs/assets/screenshots/17_employee_work_analytics.png" width="200" alt="Employee Analytics" /> |
-| **Fulfillment Runner**<br/>• Direct picking assignments<br/>• Bagging bay verification<br/>• Rider OTP handover | **Clear Governance**<br/>• Explicit CRUD rights<br/>• Price override permissions<br/>• Void bill authorizations | **Hygiene & Safety**<br/>• Cold-chain & dairy FIFO SOP<br/>• Fragile item packing standards<br/>• Shoplifting & security rules | **Store Productivity**<br/>• Tickets picked per hour<br/>• Average picking speed<br/>• Cash reconciliation logs |
+| 🛒 Online Orders Specialist Floor | 🔒 Role Permissions Matrix |
+|:---:|:---:|
+| <img src="docs/assets/screenshots/20_employee_home_picker.png" width="260" alt="Orders Specialist Home" /> | <img src="docs/assets/screenshots/21_role_permissions_detail.png" width="260" alt="Role Permissions Matrix" /> |
+| **Fulfillment Runner**<br/>• Direct picking assignments<br/>• Bagging bay verification<br/>• Rider OTP handover | **Clear Governance**<br/>• Explicit CRUD rights<br/>• Price override permissions<br/>• Void bill authorizations |
+
+| 📋 Standard Operating Procedures | 📈 Employee Work Analytics |
+|:---:|:---:|
+| <img src="docs/assets/screenshots/23_instore_sop_safety.png" width="260" alt="Store SOP Guidelines" /> | <img src="docs/assets/screenshots/17_employee_work_analytics.png" width="260" alt="Employee Analytics" /> |
+| **Hygiene & Safety**<br/>• Cold-chain & dairy FIFO SOP<br/>• Fragile item packing standards<br/>• Shoplifting & security rules | **Store Productivity**<br/>• Tickets picked per hour<br/>• Average picking speed<br/>• Cash reconciliation logs |
 
 </div>
 
@@ -114,10 +119,15 @@ Explore genuine production screenshots captured directly from the **SmartMart Ve
 
 <div align="center">
 
-| ⚙️ Store Operations Hub | 💰 Commission & Payouts | 🏪 Store Profile & Operating Hours | 🕒 Working Hours Schedule |
-|:---:|:---:|:---:|:---:|
-| <img src="docs/assets/screenshots/08_vendor_settings_hub.png" width="200" alt="Settings Hub" /> | <img src="docs/assets/screenshots/09_commission_payouts.png" width="200" alt="Commission & Payouts" /> | <img src="docs/assets/screenshots/10_store_profile_details.png" width="200" alt="Store Profile" /> | <img src="docs/assets/screenshots/11_working_hours_schedule.png" width="200" alt="Working Hours" /> |
-| **Operations Settings**<br/>• Delivery zone & 5 km radius<br/>• FSSAI license & GSTIN<br/>• Order siren volume controls | **Payout Transparency**<br/>• Silver tier partner slab<br/>• Order payout simulator<br/>• Automated bank settlements | **Branding & Identity**<br/>• Verified vendor badge<br/>• Store front photo & address<br/>• Emergency rush pause toggle | **Operational Schedule**<br/>• Monday - Sunday time slots<br/>• 1-tap "Apply All" schedule<br/>• Real-time open/close countdown |
+| ⚙️ Store Operations Hub | 💰 Commission & Payouts |
+|:---:|:---:|
+| <img src="docs/assets/screenshots/08_vendor_settings_hub.png" width="260" alt="Settings Hub" /> | <img src="docs/assets/screenshots/09_commission_payouts.png" width="260" alt="Commission & Payouts" /> |
+| **Operations Settings**<br/>• Delivery zone & 5 km radius<br/>• FSSAI license & GSTIN<br/>• Order siren volume controls | **Payout Transparency**<br/>• Silver tier partner slab<br/>• Order payout simulator<br/>• Automated bank settlements |
+
+| 🏪 Store Profile & Operating Hours | 🕒 Working Hours Schedule |
+|:---:|:---:|
+| <img src="docs/assets/screenshots/10_store_profile_details.png" width="260" alt="Store Profile" /> | <img src="docs/assets/screenshots/11_working_hours_schedule.png" width="260" alt="Working Hours" /> |
+| **Branding & Identity**<br/>• Verified vendor badge<br/>• Store front photo & address<br/>• Emergency rush pause toggle | **Operational Schedule**<br/>• Monday - Sunday time slots<br/>• 1-tap "Apply All" schedule<br/>• Real-time open/close countdown |
 
 </div>
 
@@ -127,10 +137,15 @@ Explore genuine production screenshots captured directly from the **SmartMart Ve
 
 <div align="center">
 
-| 🚀 Store Management | ⚡ Fast Order Processing | 👥 Team Collaboration | 🔐 Merchant Login | 📞 Help & Support |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="docs/assets/screenshots/02_onboarding_store_mgmt.png" width="160" alt="Store Management" /> | <img src="docs/assets/screenshots/03_onboarding_fast_orders.png" width="160" alt="Fast Order Processing" /> | <img src="docs/assets/screenshots/04_onboarding_team_roles.png" width="160" alt="Team Collaboration" /> | <img src="docs/assets/screenshots/05_merchant_login.png" width="160" alt="Merchant Login" /> | <img src="docs/assets/screenshots/12_help_support_center.png" width="160" alt="Help Center" /> |
-| **All-in-One**<br/>Consolidated catalog & multi-counter register | **Quick Fulfillment**<br/>Aisle navigation & rider dispatch | **Team Sync**<br/>Role-based tasks & intercom communication | **Secure Access**<br/>Biometric Face ID & phone verification | **24/7 Desk**<br/>Live chat, phone support & FAQ database |
+| 🚀 Store Management | ⚡ Fast Order Processing | 👥 Team Collaboration |
+|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/02_onboarding_store_mgmt.png" width="260" alt="Store Management" /> | <img src="docs/assets/screenshots/03_onboarding_fast_orders.png" width="260" alt="Fast Order Processing" /> | <img src="docs/assets/screenshots/04_onboarding_team_roles.png" width="260" alt="Team Collaboration" /> |
+| **All-in-One Operations**<br/>Consolidated catalog & counter billing | **Quick Fulfillment**<br/>Aisle navigation & rider dispatch | **Team Sync**<br/>Role-based tasks & intercom |
+
+| 🔐 Merchant Login | 📞 Help & Support | 🏢 Vendor Management Directory |
+|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/05_merchant_login.png" width="260" alt="Merchant Login" /> | <img src="docs/assets/screenshots/12_help_support_center.png" width="260" alt="Help Center" /> | <img src="docs/assets/screenshots/25_store_vendor_management.png" width="260" alt="Store Vendor Management" /> |
+| **Secure Access**<br/>Biometric Face ID & phone verification | **24/7 Desk**<br/>Live chat, phone support & FAQ database | **Store Directory**<br/>Proprietor details & store chain registry |
 
 </div>
 
