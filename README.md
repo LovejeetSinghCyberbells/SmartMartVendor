@@ -8,8 +8,8 @@
 [![React Native](https://img.shields.io/badge/React_Native-0.88.0_TurboModules-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactnative.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Platforms](https://img.shields.io/badge/Platforms-iOS_14+_|_Android_7+-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://reactnative.dev)
-[![Architecture](https://img.shields.io/badge/Engine-100%25_Offline--First-27AE60?style=for-the-badge&logo=fastapi&logoColor=white)](#offline-first-sync-engine)
-[![WhatsApp Business](https://img.shields.io/badge/Invoicing-WhatsApp_Direct_PDF-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](#tax-invoicing--whatsapp-sharing)
+[![Offline First](https://img.shields.io/badge/Engine-100%25_Offline--First-27AE60?style=for-the-badge&logo=fastapi&logoColor=white)](#5-high-level-system-architecture)
+[![WhatsApp Business](https://img.shields.io/badge/Invoicing-WhatsApp_Direct_PDF-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](#3-the-10-second-checkout-pipeline)
 [![License](https://img.shields.io/badge/License-Proprietary_Enterprise-yellow?style=for-the-badge)](#license)
 
 <br/>
@@ -19,7 +19,7 @@
 
 <br/>
 
-[📱 Live Screen Gallery](#-live-app-screen-showcase) • [⚡ 10-Second Checkout](#-the-10-second-checkout-pipeline) • [📷 Barcode Scanner Engine](#-hardware-barcode-scanner-engine) • [🏗️ System Architecture](#️-high-level-system-architecture) • [📖 Full Master Specification](docs/SMARTMART_VENDOR_SYSTEM_SPECIFICATION.md)
+[Executive Overview](#1-executive-overview--value-proposition) • [Live Screen Showcase](#2-live-application-showcase) • [10-Second Checkout](#3-the-10-second-checkout-pipeline) • [Barcode Scanner Engine](#4-hardware-barcode-scanner-engine) • [System Architecture](#5-high-level-system-architecture) • [RBAC Security](#6-role-based-access-control-rbac) • [A-to-Z Screens](#7-a-to-z-screen-dictionary) • [Quick Start](#9-developer-quick-start-guide) • [📖 Full Specification](docs/SMARTMART_VENDOR_SYSTEM_SPECIFICATION.md)
 
 ---
 
@@ -27,7 +27,7 @@
 
 <br/>
 
-## 🌟 Executive Overview & Value Proposition
+## 1. Executive Overview & Value Proposition
 
 **SmartMart Vendor** transforms any smartphone or retail tablet into an **Enterprise Retail Command Center**, bridging the gap between traditional Indian kirana stores, regional supermarket chains, and high-velocity quick-commerce dark stores.
 
@@ -43,33 +43,89 @@
 
 ---
 
-## 📱 Live App Screen Showcase
+## 2. Live Application Showcase
 
-Below are genuine, production screenshots captured from the active application running on physical devices:
+Explore genuine production screenshots captured directly from the **SmartMart Vendor** application running on physical iPhone hardware:
+
+### Module A: In-Store POS Billing & Live Inventory Management
 
 <div align="center">
 
-### In-Store POS Billing & Barcode Terminal
-
-| 📄 On-Device GST Tax Invoice Modal | 📷 60 FPS Laser Barcode Terminal |
-|:---:|:---:|
-| <img src="docs/assets/screenshots/pos_tax_invoice_modal.png" width="360" alt="SmartMart Market Tax Invoice Modal with WhatsApp Sharing" style="border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" /> | <img src="docs/assets/screenshots/barcode_scanner_terminal.png" width="360" alt="Laser Barcode Scanner Terminal with Animated Sweep" style="border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" /> |
-| **Instant Vector PDF Preview & Direct WhatsApp Share**<br/><sub>• Dark green frame `#2D5A43`, cream card `#FAF7F2`<br/>• Automatic GST 5% calculation & savings badge<br/>• Direct WhatsApp dispatch with zero external links</sub> | **Real-Time CameraKit Viewfinder**<br/><sub>• Animated green sweep laser & corner targeting reticles<br/>• Instant EAN-13, EAN-8, UPC, and QR decoding<br/>• Direct bottom sheet product card with aisle location</sub> |
-
-<br/>
-
-### Store Operations, Dark Store Settings & Onboarding
-
-| ⚙️ Store Operations & Settings | 🏪 Store Profile & Live Status | 🚀 Interactive Merchant Onboarding |
+| 🧾 POS Counter Billing | 📦 In-Store Products & Stock | ⚙️ Scanner Hardware Settings |
 |:---:|:---:|:---:|
-| <img src="docs/assets/screenshots/vendor_settings_screen.png" width="270" alt="Vendor Settings Screen" style="border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" /> | <img src="docs/assets/screenshots/vendor_profile_header.png" width="340" alt="Vendor Store Profile Screen" style="border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" /> | <img src="docs/assets/screenshots/onboarding_welcome.png" width="270" alt="Merchant Onboarding Carousel" style="border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" /> |
-| **Operational Hub**<br/><sub>• Store Profile & FSSAI / GSTIN<br/>• Geofence fulfillment radius<br/>• Working hours & emergency pause<br/>• High-volume order siren settings</sub> | **Executive Identity**<br/><sub>• Live accepting orders status pill<br/>• Verified vendor store badge<br/>• Multi-counter performance tracking<br/>• Instant role switcher</sub> | **Visual Onboarding**<br/><sub>• Omnichannel order management<br/>• Instant barcode billing guides<br/>• Staff floor pager instructions<br/>• Multi-language setup</sub> |
+| <img src="docs/assets/screenshots/15_pos_counter_billing.png" width="260" alt="POS Counter Billing" /> | <img src="docs/assets/screenshots/18_inventory_stock_management.png" width="260" alt="In-Store Inventory Management" /> | <img src="docs/assets/screenshots/24_scanner_hardware_settings.png" width="260" alt="Barcode Scanner Settings" /> |
+| **High-Speed Register**<br/>• Real-time product search & categories<br/>• Customer mobile validation for WhatsApp<br/>• Auto-discount calculation & GST | **Stock & Price Floor**<br/>• Live stock replenishment controls<br/>• Aisle and rack location mapping<br/>• Instant price & buffer adjustments | **Hardware Configuration**<br/>• Haptic vibration on successful barcode scan<br/>• Audio beep chime on price tag match<br/>• Camera autofocus & low-light sensitivity |
 
 </div>
 
 ---
 
-## ⚡ The 10-Second Checkout Pipeline
+### Module B: Executive Cockpit & Omnichannel Order Fulfillment
+
+<div align="center">
+
+| 📊 Vendor Executive Dashboard | 🛍️ Orders Fulfillment Queue | 👨‍💼 Store Manager Cockpit |
+|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/06_vendor_home_dashboard.png" width="260" alt="Vendor Executive Dashboard" /> | <img src="docs/assets/screenshots/07_orders_fulfillment_queue.png" width="260" alt="Orders Dispatch Queue" /> | <img src="docs/assets/screenshots/14_employee_home_manager.png" width="260" alt="Store Manager Operations" /> |
+| **Store Command Center**<br/>• Today's sales & order count metrics<br/>• Channel breakdown (POS vs Delivery)<br/>• 1-tap quick action launch bar | **Omnichannel Picking Queue**<br/>• Filter: All, New, Packing, Ready<br/>• SLA countdown timer per ticket<br/>• Staging bay & bag identifier tracking | **Floor Manager Overview**<br/>• Active shift duty schedule<br/>• Manager summon buzzer notifications<br/>• Direct oversight of billing & pickers |
+
+</div>
+
+---
+
+### Module C: Store Team Coordination, Floor Intercom & Attendance
+
+<div align="center">
+
+| 👥 Staff Role & Persona Switcher | 💬 Real-Time Store Floor Chat | ⏱️ Shift Attendance Tracker |
+|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/19_team_staff_role_switcher.png" width="260" alt="Staff Persona Switcher" /> | <img src="docs/assets/screenshots/16_store_floor_chat.png" width="260" alt="Store Floor Chat" /> | <img src="docs/assets/screenshots/22_shift_attendance_tracker.png" width="260" alt="Shift & Attendance Tracker" /> |
+| **Granular RBAC Security**<br/>• Switch between Manager, Cashier & Picker<br/>• Strict permission matrix enforcement<br/>• Live shift status simulation | **Hardware-Free Intercom**<br/>• `#general-store-floor` channel<br/>• `#billing-counters` priority alerts<br/>• 1-on-1 direct staff collaboration | **Geofenced Time Clock**<br/>• Real-time shift elapsed duty timer<br/>• GPS geofence clock-in verification<br/>• Monthly attendance log & leave requests |
+
+</div>
+
+---
+
+### Module D: Dark Store Picking, Task SOPs & Staff Analytics
+
+<div align="center">
+
+| 🛒 Online Orders Specialist Floor | 🔒 Role Permissions Matrix | 📋 Standard Operating Procedures | 📈 Employee Work Analytics |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/20_employee_home_picker.png" width="200" alt="Orders Specialist Home" /> | <img src="docs/assets/screenshots/21_role_permissions_detail.png" width="200" alt="Role Permissions Matrix" /> | <img src="docs/assets/screenshots/23_instore_sop_safety.png" width="200" alt="Store SOP Guidelines" /> | <img src="docs/assets/screenshots/17_employee_work_analytics.png" width="200" alt="Employee Analytics" /> |
+| **Fulfillment Runner**<br/>• Direct picking assignments<br/>• Bagging bay verification<br/>• Rider OTP handover | **Clear Governance**<br/>• Explicit CRUD rights<br/>• Price override permissions<br/>• Void bill authorizations | **Hygiene & Safety**<br/>• Cold-chain & dairy FIFO SOP<br/>• Fragile item packing standards<br/>• Shoplifting & security rules | **Store Productivity**<br/>• Tickets picked per hour<br/>• Average picking speed<br/>• Cash reconciliation logs |
+
+</div>
+
+---
+
+### Module E: Store Configuration, Operations Hub & Settlements
+
+<div align="center">
+
+| ⚙️ Store Operations Hub | 💰 Commission & Payouts | 🏪 Store Profile & Operating Hours | 🕒 Working Hours Schedule |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/08_vendor_settings_hub.png" width="200" alt="Settings Hub" /> | <img src="docs/assets/screenshots/09_commission_payouts.png" width="200" alt="Commission & Payouts" /> | <img src="docs/assets/screenshots/10_store_profile_details.png" width="200" alt="Store Profile" /> | <img src="docs/assets/screenshots/11_working_hours_schedule.png" width="200" alt="Working Hours" /> |
+| **Operations Settings**<br/>• Delivery zone & 5 km radius<br/>• FSSAI license & GSTIN<br/>• Order siren volume controls | **Payout Transparency**<br/>• Silver tier partner slab<br/>• Order payout simulator<br/>• Automated bank settlements | **Branding & Identity**<br/>• Verified vendor badge<br/>• Store front photo & address<br/>• Emergency rush pause toggle | **Operational Schedule**<br/>• Monday - Sunday time slots<br/>• 1-tap "Apply All" schedule<br/>• Real-time open/close countdown |
+
+</div>
+
+---
+
+### Module F: Merchant Onboarding, Support & Management
+
+<div align="center">
+
+| 🚀 Store Management | ⚡ Fast Order Processing | 👥 Team Collaboration | 🔐 Merchant Login | 📞 Help & Support |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="docs/assets/screenshots/02_onboarding_store_mgmt.png" width="160" alt="Store Management" /> | <img src="docs/assets/screenshots/03_onboarding_fast_orders.png" width="160" alt="Fast Order Processing" /> | <img src="docs/assets/screenshots/04_onboarding_team_roles.png" width="160" alt="Team Collaboration" /> | <img src="docs/assets/screenshots/05_merchant_login.png" width="160" alt="Merchant Login" /> | <img src="docs/assets/screenshots/12_help_support_center.png" width="160" alt="Help Center" /> |
+| **All-in-One**<br/>Consolidated catalog & multi-counter register | **Quick Fulfillment**<br/>Aisle navigation & rider dispatch | **Team Sync**<br/>Role-based tasks & intercom communication | **Secure Access**<br/>Biometric Face ID & phone verification | **24/7 Desk**<br/>Live chat, phone support & FAQ database |
+
+</div>
+
+---
+
+## 3. The 10-Second Checkout Pipeline
 
 SmartMart eliminates thermal printer bottlenecks with an autonomous on-device pipeline:
 
@@ -79,7 +135,7 @@ SmartMart eliminates thermal printer bottlenecks with an autonomous on-device pi
 
 </div>
 
-1. **60 FPS Scan**: Cashier points camera at SKU barcode (`< 85ms` detection).
+1. **60 FPS Hardware Scan**: Cashier points camera at SKU barcode (`< 85ms` detection).
 2. **Cart Engine**: Real-time MRP vs. discounted price evaluation, calculating customer savings (`Save ₹X`) and 5% GST breakdown.
 3. **Multi-Mode Tender**: Select `CASH` (auto-computes change returned), `UPI` (in-store dynamic QR), or `CARD`.
 4. **On-Device Vector PDF**: Generates a standard A4 Tax Invoice document locally without server roundtrips.
@@ -87,7 +143,7 @@ SmartMart eliminates thermal printer bottlenecks with an autonomous on-device pi
 
 ---
 
-## 📷 Hardware Barcode Scanner Engine
+## 4. Hardware Barcode Scanner Engine
 
 Equipped with high-performance native camera streams via `react-native-camera-kit`:
 
@@ -97,13 +153,13 @@ Equipped with high-performance native camera streams via `react-native-camera-ki
 
 </div>
 
-- **Formats**: EAN-13, EAN-8, UPC-A, UPC-E, Code 128, QR Code.
+- **Supported Formats**: EAN-13, EAN-8, UPC-A, UPC-E, Code 128, QR Code.
 - **Instant Shelf Metadata**: Instantly retrieves selling price, stock quantities, and physical aisle placement (e.g. *Aisle 2 • Dairy Chiller #1*).
 - **Cart Integration**: 1-tap "Add to Active POS Register Cart".
 
 ---
 
-## 🏛️ High-Level System Architecture
+## 5. High-Level System Architecture
 
 SmartMart Vendor operates on a decentralized, hybrid-cloud architecture:
 
@@ -155,11 +211,11 @@ flowchart TD
 
 ---
 
-## 👥 Role-Based Access Control (RBAC)
+## 6. Role-Based Access Control (RBAC)
 
 Configured dynamically via `StaffRoleContext`, supporting granular supermarket security:
 
-| Role | Title | POS Counter | Catalog CRUD | Order Picking | Team / Leaves | Bank Financials |
+| Role | Title in Store | POS Counter | Catalog CRUD | Order Picking | Team / Leaves | Bank Financials |
 |---|---|:---:|:---:|:---:|:---:|:---:|
 | **VENDOR** | Store Proprietor / Owner | Full CRUD | Full CRUD | Full CRUD | Full Admin | Full Access |
 | **MANAGER** | Store General Manager | Full CRUD | Create / Update | Full CRUD | View & Approve | Store Summary |
@@ -170,56 +226,82 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 
 ---
 
-## 📑 A-to-Z Screen Dictionary (41 Screens)
+## 7. A-to-Z Screen Dictionary
 
 <details>
 <summary><b>1. Authentication & Onboarding Module (4 Screens)</b></summary>
+
+<br/>
 
 - `SplashScreen` (`src/features/auth/screens/SplashScreen.tsx`): App launch entry point, session restoration, and biometric lock verification.
 - `OnboardingScreen` (`src/features/auth/screens/OnboardingScreen.tsx`): 3-slide value illustration carousel tailored for supermarkets.
 - `LoginScreen` (`src/features/auth/screens/LoginScreen.tsx`): Multi-factor merchant & staff authentication with biometric Face ID / Fingerprint login.
 - `SignupScreen` (`src/features/auth/screens/SignupScreen.tsx`): Supermarket onboarding & KYC compliance registration (GSTIN verification, GPS pinpoint).
+
+<br/>
 </details>
 
 <details>
 <summary><b>2. Dashboard & Operational Hub (2 Screens)</b></summary>
 
+<br/>
+
 - `VendorHomeScreen` (`src/features/home/screens/VendorHomeScreen.tsx`): Executive cockpit displaying today's gross sales, channel splits (online vs POS), active picking orders, and quick action bar.
 - `EmployeeHomeScreen` (`src/features/home/screens/EmployeeHomeScreen.tsx`): Role-tailored operational home for floor staff showing shift elapsed timers, assigned aisles, and picking tickets.
+
+<br/>
 </details>
 
 <details>
 <summary><b>3. POS Counter Billing & Tax Invoicing (2 Screens/Components)</b></summary>
 
+<br/>
+
 - `StoreBillingScreen` (`src/features/billing/screens/StoreBillingScreen.tsx`): High-speed offline-capable in-store billing counter register with category filtering, cart calculations, multi-mode tender, and tax invoice modal.
 - `InvoiceDocumentView` (`src/features/billing/components/InvoiceDocumentView.tsx`): Visual on-screen rendering replicating the cream/green A4 tax invoice card design with paid badges and GST terms.
+
+<br/>
 </details>
 
 <details>
 <summary><b>4. Barcode Scanning & Instant Price Checker (1 Screen)</b></summary>
 
+<br/>
+
 - `BarcodeScannerScreen` (`src/features/inventory/screens/BarcodeScannerScreen.tsx`): 60 FPS camera scanner with laser targeting overlay, haptic feedback, and matched bottom sheet card.
+
+<br/>
 </details>
 
 <details>
 <summary><b>5. Inventory, Catalog & Stock Management (4 Screens)</b></summary>
 
+<br/>
+
 - `InventoryScreen` (`src/features/inventory/screens/InventoryScreen.tsx`): Master inventory with tabs for All SKUs, In Stock, Low Stock (<= 5 units), and Out of Stock.
 - `StoreProductsScreen` (`src/features/inventory/screens/StoreProductsScreen.tsx`): Grid & list catalog view for rapid price tag updates and replenishment.
 - `ProductFormScreen` (`src/features/inventory/screens/ProductFormScreen.tsx`): Add/edit product SKU with barcode autofocus, MRP, selling price, tax slab, and aisle location.
 - `LowStockScreen` (`src/features/inventory/screens/LowStockScreen.tsx`): Critical stock depletion manager with 1-tap supplier reorder requisitions.
+
+<br/>
 </details>
 
 <details>
 <summary><b>6. Omnichannel Order Fulfillment & Dark Store Staging (3 Screens)</b></summary>
 
+<br/>
+
 - `VendorOrdersScreen` (`src/features/orders/screens/VendorOrdersScreen.tsx`): Central dispatch monitor for online quick-commerce delivery orders (New, Picking, Ready for Rider, Dispatched).
 - `OrderDetailScreen` (`src/features/orders/screens/OrderDetailScreen.tsx`): Interactive picker checklist with SKU barcode verification, staging bay allocation (e.g. *Bay #4, Bag #B-42*), and rider 4-digit PIN verification.
 - `DeliveryNavigation` (`src/app/navigation/DeliveryNavigation.tsx`): Dedicated dark store workflow segmented by target SLAs (4 mins target, 6 mins target).
+
+<br/>
 </details>
 
 <details>
 <summary><b>7. Team Management, Attendance & HR Workflow (8 Screens)</b></summary>
+
+<br/>
 
 - `TeamManagementScreen` (`src/features/team/screens/TeamManagementScreen.tsx`): Staff list with role badges and active shift indicators.
 - `AddEmployeeScreen` (`src/features/team/screens/AddEmployeeScreen.tsx`): Register staff and configure granular permissions.
@@ -229,24 +311,36 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 - `EmployeeGuidelinesSOPScreen` (`src/features/team/screens/EmployeeGuidelinesSOPScreen.tsx`): Food hygiene, fragile packing, and return SOPs.
 - `EmployeeNoticeBoardScreen` (`src/features/team/screens/EmployeeNoticeBoardScreen.tsx`): Store owner announcements.
 - `TeamAnalyticsScreen` (`src/features/team/screens/TeamAnalyticsScreen.tsx`): Productivity metrics tracking tickets picked per hour.
+
+<br/>
 </details>
 
 <details>
 <summary><b>8. Floor Pager & In-Store Intercom (3 Screens/Components)</b></summary>
 
+<br/>
+
 - `ManagerSummonOverlay` (`src/features/team/components/ManagerSummonOverlay.tsx`): Hardware-free digital intercom to summon managers to counters/aisles with high-priority haptic buzzes.
 - `TeamChatListScreen` & `TeamChatConversationScreen` (`src/features/team/screens/TeamChatListScreen.tsx`): Internal store messaging channels (`#general-floor`, `#billing-counters`, `#riders`).
+
+<br/>
 </details>
 
 <details>
 <summary><b>9. Finance, Earnings & Settlement Gateway (2 Screens)</b></summary>
 
+<br/>
+
 - `EarningsScreen` (`src/features/earnings/screens/EarningsScreen.tsx`): Revenue, tax liability, platform commissions, and scheduled bank payout ledger.
 - `SettlementDetailScreen` (`src/features/earnings/screens/SettlementDetailScreen.tsx`): NEFT/RTGS UTR deposit tracking with downloadable tax certificates.
+
+<br/>
 </details>
 
 <details>
 <summary><b>10. Store Configuration & Operational Settings (6 Screens)</b></summary>
+
+<br/>
 
 - `VendorSettingsScreen` (`src/features/settings/screens/VendorSettingsScreen.tsx`): Master settings dashboard.
 - `StoreProfileScreen` (`src/features/settings/screens/StoreProfileScreen.tsx`): Trading name, logo, GSTIN, FSSAI number.
@@ -254,10 +348,14 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 - `WorkingHoursScreen` (`src/features/settings/screens/WorkingHoursScreen.tsx`): Operational schedule & emergency store rush pause.
 - `CommissionRateScreen` (`src/features/settings/screens/CommissionRateScreen.tsx`): Platform commission and gateway fees breakdown.
 - `NotificationPreferencesScreen` (`src/features/settings/screens/NotificationPreferencesScreen.tsx`): High-volume siren and WhatsApp summary toggles.
+
+<br/>
 </details>
 
 <details>
 <summary><b>11. Account, Security, Support & Legal (7 Screens)</b></summary>
+
+<br/>
 
 - `ProfileScreen` & `EditProfileScreen`: Store Owner security and contact details.
 - `AddressScreen` & `AddEditAddressScreen`: Secondary warehouses and supplier pickup points.
@@ -266,13 +364,15 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 - `SettingsScreen`: Multi-language selector (9 languages) and biometric lock settings.
 - `HelpScreen` & `LiveChatScreen`: 24/7 priority live chat support with partner operations.
 - `PrivacyPolicyScreen` & `TermsOfServiceScreen`: Statutory compliance and GST records guidelines.
+
+<br/>
 </details>
 
-> 📖 **Complete Specification**: For the complete 780-line technical guide with every REST endpoint, WebSocket payload, and database column, see [docs/SMARTMART_VENDOR_SYSTEM_SPECIFICATION.md](docs/SMARTMART_VENDOR_SYSTEM_SPECIFICATION.md).
+> 📖 **Deep Technical Specification**: For the complete 780-line backend guide with every REST endpoint, WebSocket payload, and database column, see [docs/SMARTMART_VENDOR_SYSTEM_SPECIFICATION.md](docs/SMARTMART_VENDOR_SYSTEM_SPECIFICATION.md).
 
 ---
 
-## 📊 Key ROI Metrics for Supermarkets
+## 8. Business ROI & Impact Metrics
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -288,7 +388,7 @@ Configured dynamically via `StaffRoleContext`, supporting granular supermarket s
 
 ---
 
-## 🛠️ Developer Quick Start
+## 9. Developer Quick Start Guide
 
 ### Prerequisites
 - **Node.js**: `20.x` or `22.x` LTS
@@ -332,7 +432,7 @@ npm test -- --no-watchman
 
 ---
 
-## 📁 Repository Structure
+## 10. Repository Structure & Security
 
 ```
 Smart-Mart-Vendor/
@@ -343,11 +443,16 @@ Smart-Mart-Vendor/
 │       │   ├── hero_banner.svg
 │       │   ├── barcode_scanner_demo.svg
 │       │   └── pos_flow_diagram.svg
-│       └── screenshots/                          # Real app screenshots
-│           ├── pos_tax_invoice_modal.png
-│           ├── barcode_scanner_terminal.png
-│           ├── vendor_settings_screen.png
-│           └── vendor_profile_header.png
+│       └── screenshots/                          # 25 iPhone 16 Pro screenshots
+│           ├── 01_splash_screen.png
+│           ├── 06_vendor_home_dashboard.png
+│           ├── 07_orders_fulfillment_queue.png
+│           ├── 15_pos_counter_billing.png
+│           ├── 16_store_floor_chat.png
+│           ├── 18_inventory_stock_management.png
+│           ├── 19_team_staff_role_switcher.png
+│           ├── 22_shift_attendance_tracker.png
+│           └── ...
 ├── src/
 │   ├── app/                                      # Root Navigation & Themes
 │   │   ├── navigation/
@@ -369,17 +474,14 @@ Smart-Mart-Vendor/
 └── README.md                                     # Executive Project Overview
 ```
 
----
-
-## 🔒 Security & Privacy Compliance
-
+### Security & Privacy Compliance
 - **Biometric Keychain Protection**: Refresh tokens and merchant secrets are stored strictly within the Secure Enclave / Android Keystore.
 - **Zero External Intermediaries**: Invoices are generated directly on-device and shared straight to the customer's WhatsApp application without passing through third-party URL link shorteners or domain parking redirects.
 - **GST Statutory Records**: Conforms to Section 31 of the Central Goods and Services Tax (CGST) Act, 2017 for digital tax invoice issuance.
 
 ---
 
-## 📄 License & Intellectual Property
+## License
 
 Copyright © 2026 **SmartMart Retail Technologies Inc.** All rights reserved.  
 *Confidential & Proprietary. Unauthorized distribution, reverse engineering, or commercial reproduction is strictly prohibited.*
