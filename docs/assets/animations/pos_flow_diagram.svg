@@ -1,116 +1,156 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 180" width="100%" height="180" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220" fill="none">
   <defs>
-    <linearGradient id="flowBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#071911" />
-      <stop offset="100%" stop-color="#0D281E" />
+    <!-- Brand Gradients: SmartMart Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
+    <linearGradient id="flowBgBrand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082113" />
+      <stop offset="50%" stop-color="#0F331E" />
+      <stop offset="100%" stop-color="#06180D" />
     </linearGradient>
-    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1B4D36" />
-      <stop offset="100%" stop-color="#0E2D1F" />
+
+    <linearGradient id="cardGradStep" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#164A29" />
+      <stop offset="100%" stop-color="#0E331B" />
     </linearGradient>
-    <linearGradient id="activeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2D5A43" />
-      <stop offset="100%" stop-color="#18432F" />
+
+    <linearGradient id="cardGradHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E6136" />
+      <stop offset="100%" stop-color="#144626" />
     </linearGradient>
-    <filter id="stepGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
+
+    <filter id="photonGlowBrand" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
 
     <style>
-      .pipe-pulse {
+      .pipeline-dash-brand {
         stroke-dasharray: 6 8;
-        animation: pipeDash 1.2s linear infinite;
+        animation: animPipeDash 1.2s linear infinite;
       }
-      .photon-1 {
-        animation: travelPhoton 3s infinite linear;
+      .photon-traveler-1 {
+        animation: animPhotonTravel 2.8s infinite linear;
       }
-      @keyframes pipeDash {
+      .photon-traveler-2 {
+        animation: animPhotonTravel 2.8s infinite linear 1.4s;
+      }
+      .step-border-pulse {
+        animation: animStepBorder 2.8s infinite ease-in-out;
+      }
+
+      @keyframes animPipeDash {
         to { stroke-dashoffset: -28; }
       }
-      @keyframes travelPhoton {
+      @keyframes animPhotonTravel {
         0% { transform: translateX(0px); opacity: 0; }
         10% { opacity: 1; }
         90% { opacity: 1; }
-        100% { transform: translateX(670px); opacity: 0; }
+        100% { transform: translateX(700px); opacity: 0; }
+      }
+      @keyframes animStepBorder {
+        0%, 100% { stroke: #258B3E; stroke-width: 1.2; }
+        50% { stroke: #70DB8E; stroke-width: 2; }
       }
     </style>
   </defs>
 
   <!-- Container -->
-  <rect width="920" height="180" rx="14" fill="url(#flowBg)" stroke="#1F4D38" stroke-width="1.2" />
+  <rect width="920" height="220" rx="16" fill="url(#flowBgBrand)" stroke="#258B3E" stroke-width="1.5" />
 
-  <!-- Title Banner -->
-  <text x="36" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#2ECC71" letter-spacing="1.2">
-    THE 10-SECOND CHECKOUT PIPELINE (100% OFFLINE-CAPABLE)
-  </text>
-  <text x="750" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#74C69D">
-    ZERO PRINTER LATENCY
-  </text>
+  <!-- Title Header -->
+  <g transform="translate(36, 28)">
+    <circle cx="6" cy="6" r="4.5" fill="#258B3E" />
+    <text x="18" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#EAF5ED" letter-spacing="1.2">
+      THE 10-SECOND CHECKOUT PIPELINE • <tspan fill="#70DB8E">100% OFFLINE-CAPABLE ARCHITECTURE</tspan>
+    </text>
+  </g>
+  <g transform="translate(710, 28)">
+    <rect width="174" height="22" rx="11" fill="#1A632C" stroke="#258B3E" stroke-width="0.8" />
+    <text x="87" y="15" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#EAF5ED">
+      CONSUMABLES: ₹0 / ZERO PAPER
+    </text>
+  </g>
 
-  <!-- Flow Pipeline Line (Connecting all 5 nodes) -->
-  <g transform="translate(100, 85)">
+  <!-- Central Traveling Pipeline Track -->
+  <g transform="translate(90, 106)">
     <!-- Base track -->
-    <line x1="0" y1="0" x2="720" y2="0" stroke="#143D2B" stroke-width="4" stroke-linecap="round" />
-    <!-- Animated pulsing stream -->
-    <line class="pipe-pulse" x1="0" y1="0" x2="720" y2="0" stroke="#2ECC71" stroke-width="2.5" stroke-linecap="round" />
-    <!-- Photon Bullet -->
-    <circle class="photon-1" cx="0" cy="0" r="5" fill="#A3E635" filter="url(#stepGlow)" />
+    <line x1="0" y1="0" x2="740" y2="0" stroke="#103820" stroke-width="5" stroke-linecap="round" />
+    <!-- Glowing stream -->
+    <line class="pipeline-dash-brand" x1="0" y1="0" x2="740" y2="0" stroke="#258B3E" stroke-width="3" stroke-linecap="round" />
+    <!-- Traveling Energy Photons -->
+    <circle class="photon-traveler-1" cx="0" cy="0" r="6" fill="#70DB8E" filter="url(#photonGlowBrand)" />
+    <circle class="photon-traveler-2" cx="0" cy="0" r="5" fill="#EAF5ED" filter="url(#photonGlowBrand)" />
   </g>
 
-  <!-- STEP 1: Scan Barcode -->
-  <g transform="translate(36, 46)">
-    <rect width="144" height="78" rx="10" fill="url(#stepGrad)" stroke="#27AE60" stroke-width="1" />
-    <circle cx="28" cy="24" r="12" fill="#133829" />
-    <text x="21" y="29" font-size="14">📷</text>
-    <text x="48" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">1. 60 FPS Scan</text>
-    <text x="14" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#95D5B2">EAN-13 / QR Decoder</text>
-    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#2ECC71">&lt; 85ms detection</text>
+  <!-- ==================== 5 PIPELINE STAGE CARDS ==================== -->
+
+  <!-- STEP 1: 60 FPS Camera Scan -->
+  <g transform="translate(36, 56)">
+    <rect class="step-border-pulse" width="148" height="98" rx="12" fill="url(#cardGradStep)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">📷</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">1. 60 FPS Scan</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#70DB8E">&lt; 85ms Latency</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">CameraKit native stream</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">EAN-13, EAN-8, QR Code</text>
+    <circle cx="74" cy="98" r="4" fill="#258B3E" />
   </g>
 
-  <!-- STEP 2: Cart Calculation -->
-  <g transform="translate(216, 46)">
-    <rect width="144" height="78" rx="10" fill="url(#stepGrad)" stroke="#27AE60" stroke-width="1" />
-    <circle cx="28" cy="24" r="12" fill="#133829" />
-    <text x="21" y="29" font-size="14">🛒</text>
-    <text x="48" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">2. Cart Engine</text>
-    <text x="14" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#95D5B2">Auto-Discount &amp; GST</text>
-    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#2ECC71">Live Save ₹X badge</text>
+  <!-- STEP 2: Smart Cart Engine -->
+  <g transform="translate(214, 56)">
+    <rect class="step-border-pulse" width="148" height="98" rx="12" fill="url(#cardGradStep)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">🛒</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">2. Cart Engine</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#70DB8E">Auto Discount</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Real-time savings calculation</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">GST 5% slab breakdown</text>
+    <circle cx="74" cy="98" r="4" fill="#258B3E" />
   </g>
 
-  <!-- STEP 3: Payment Split -->
-  <g transform="translate(396, 46)">
-    <rect width="144" height="78" rx="10" fill="url(#stepGrad)" stroke="#27AE60" stroke-width="1" />
-    <circle cx="28" cy="24" r="12" fill="#133829" />
-    <text x="21" y="29" font-size="14">💳</text>
-    <text x="48" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">3. Payment Mode</text>
-    <text x="14" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#95D5B2">Cash Change / UPI / Card</text>
-    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#2ECC71">1-Tap tender calc</text>
+  <!-- STEP 3: Multi-Mode Tender -->
+  <g transform="translate(392, 56)">
+    <rect class="step-border-pulse" width="148" height="98" rx="12" fill="url(#cardGradStep)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">💳</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">3. Tender &amp; Pay</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#70DB8E">CASH / UPI / CARD</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Auto cash change calculator</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Soundbox &amp; UPI QR reference</text>
+    <circle cx="74" cy="98" r="4" fill="#258B3E" />
   </g>
 
   <!-- STEP 4: Local Vector PDF Generation -->
-  <g transform="translate(576, 46)">
-    <rect width="144" height="78" rx="10" fill="url(#activeGrad)" stroke="#A3E635" stroke-width="1.2" />
-    <circle cx="28" cy="24" r="12" fill="#133829" />
-    <text x="21" y="29" font-size="14">📄</text>
-    <text x="48" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#A3E635">4. Local Vector PDF</text>
-    <text x="14" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#E8F5E9">A4 Green Card Design</text>
-    <text x="14" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#A3E635">Zero network latency</text>
+  <g transform="translate(570, 56)">
+    <rect class="step-border-pulse" width="148" height="98" rx="12" fill="url(#cardGradHighlight)" stroke="#70DB8E" stroke-width="1.5" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">📄</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#70DB8E">4. Vector PDF</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#EAF5ED">On-Device Engine</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#EAF5ED">A4 Green Frame &amp; Cream Card</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#EAF5ED">100% Offline • Zero server lag</text>
+    <circle cx="74" cy="98" r="4" fill="#70DB8E" />
   </g>
 
-  <!-- STEP 5: WhatsApp Direct Dispatch -->
-  <g transform="translate(756, 46)">
-    <rect width="138" height="78" rx="10" fill="url(#activeGrad)" stroke="#2ECC71" stroke-width="1.2" />
-    <circle cx="26" cy="24" r="12" fill="#25D366" fill-opacity="0.25" />
-    <text x="19" y="29" font-size="14">💬</text>
-    <text x="46" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">5. WhatsApp</text>
-    <text x="12" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#E8F5E9">Target Customer Phone</text>
-    <text x="12" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#2ECC71">Zero thermal paper</text>
+  <!-- STEP 5: Direct WhatsApp File Share -->
+  <g transform="translate(748, 56)">
+    <rect class="step-border-pulse" width="136" height="98" rx="12" fill="url(#cardGradHighlight)" stroke="#25D366" stroke-width="1.5" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">💬</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">5. WhatsApp</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#25D366">Direct PDF File</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#EAF5ED">Targets customer mobile</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#EAF5ED">Zero dead/parking links</text>
+    <circle cx="68" cy="98" r="4" fill="#25D366" />
   </g>
 
-  <!-- Footer explanation note -->
-  <text x="460" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#74C69D">
-    Total transaction duration: <tspan fill="#A3E635" font-weight="700">~10 seconds</tspan> • Replaces ₹18,000/yr thermal roll consumables with instant branded digital customer touchpoints.
-  </text>
+  <!-- Bottom Explanatory Summary Bar -->
+  <g transform="translate(36, 172)">
+    <rect width="848" height="32" rx="8" fill="#0D2E1A" stroke="#1A632C" stroke-width="1" />
+    <text x="20" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#EAF5ED">
+      ⚡ <tspan fill="#70DB8E" font-weight="800">Total Cycle Time: ~10 Seconds</tspan> • Replaces ₹18,000/year thermal rolls with official GST PDFs delivered straight to customer WhatsApp.
+    </text>
+    <text x="828" y="21" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#70DB8E">
+      OFFLINE READY ✓
+    </text>
+  </g>
 </svg>
-

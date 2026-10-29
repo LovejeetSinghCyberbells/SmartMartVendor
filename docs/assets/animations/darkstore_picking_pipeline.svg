@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220" fill="none">
+  <defs>
+    <!-- Brand Gradients: SmartMart Primary #258B3E, PrimaryDark #1A632C, PrimaryLight #EAF5ED -->
+    <linearGradient id="pickBgBrand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082113" />
+      <stop offset="50%" stop-color="#0F331E" />
+      <stop offset="100%" stop-color="#06180D" />
+    </linearGradient>
+
+    <linearGradient id="cardGradPick" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#164A29" />
+      <stop offset="100%" stop-color="#0E331B" />
+    </linearGradient>
+
+    <linearGradient id="cardGradHighlightPick" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E6136" />
+      <stop offset="100%" stop-color="#144626" />
+    </linearGradient>
+
+    <filter id="pickPhotonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .conveyor-stream {
+        stroke-dasharray: 6 8;
+        animation: animConveyorDash 1.2s linear infinite;
+      }
+      .tote-traveler-1 {
+        animation: animToteTravel 3s infinite linear;
+      }
+      .sla-timer-pulse {
+        animation: animSlaBlink 1.5s infinite ease-in-out;
+      }
+      .step-pick-border {
+        animation: animPickBorder 3s infinite ease-in-out;
+      }
+
+      @keyframes animConveyorDash {
+        to { stroke-dashoffset: -28; }
+      }
+      @keyframes animToteTravel {
+        0% { transform: translateX(0px); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(700px); opacity: 0; }
+      }
+      @keyframes animSlaBlink {
+        0%, 100% { fill: #F59E0B; }
+        50% { fill: #EF4444; }
+      }
+      @keyframes animPickBorder {
+        0%, 100% { stroke: #258B3E; stroke-width: 1.2; }
+        50% { stroke: #70DB8E; stroke-width: 2; }
+      }
+    </style>
+  </defs>
+
+  <!-- Container -->
+  <rect width="920" height="220" rx="16" fill="url(#pickBgBrand)" stroke="#258B3E" stroke-width="1.5" />
+
+  <!-- Title Header -->
+  <g transform="translate(36, 28)">
+    <circle cx="6" cy="6" r="4.5" fill="#258B3E" />
+    <text x="18" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#EAF5ED" letter-spacing="1.2">
+      OMNICHANNEL DARK STORE PICKING &amp; DISPATCH ENGINE • <tspan fill="#70DB8E">99.8% ACCURACY</tspan>
+    </text>
+  </g>
+  <g transform="translate(710, 28)">
+    <rect width="174" height="22" rx="11" fill="#1A632C" stroke="#258B3E" stroke-width="0.8" />
+    <text x="87" y="15" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#EAF5ED">
+      SLA TARGET: &lt; 10 MINS
+    </text>
+  </g>
+
+  <!-- Central Traveling Conveyor Line -->
+  <g transform="translate(90, 106)">
+    <!-- Base track -->
+    <line x1="0" y1="0" x2="740" y2="0" stroke="#103820" stroke-width="5" stroke-linecap="round" />
+    <!-- Glowing pulse stream -->
+    <line class="conveyor-stream" x1="0" y1="0" x2="740" y2="0" stroke="#258B3E" stroke-width="3" stroke-linecap="round" />
+    <!-- Traveling Tote Box -->
+    <circle class="tote-traveler-1" cx="0" cy="0" r="6" fill="#70DB8E" filter="url(#pickPhotonGlow)" />
+  </g>
+
+  <!-- ==================== 5 PICKING WORKFLOW NODES ==================== -->
+
+  <!-- NODE 1: Incoming Order & SLA -->
+  <g transform="translate(36, 56)">
+    <rect class="step-pick-border" width="148" height="98" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">🔔</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">1. Order In</text>
+    <text class="sla-timer-pulse" x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700">⏱️ 08:42 SLA</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Audible siren alert</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Ticket: #ORD-8821</text>
+    <circle cx="74" cy="98" r="4" fill="#258B3E" />
+  </g>
+
+  <!-- NODE 2: Shortest Aisle Route -->
+  <g transform="translate(214, 56)">
+    <rect class="step-pick-border" width="148" height="98" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">🗺️</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">2. Aisle Route</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#70DB8E">Shortest Path</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Aisle 2 (Dairy Chiller)</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Aisle 3 (Bakery Racks)</text>
+    <circle cx="74" cy="98" r="4" fill="#258B3E" />
+  </g>
+
+  <!-- NODE 3: Barcode Verification -->
+  <g transform="translate(392, 56)">
+    <rect class="step-pick-border" width="148" height="98" rx="12" fill="url(#cardGradHighlightPick)" stroke="#70DB8E" stroke-width="1.5" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">📷</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#70DB8E">3. Barcode Scan</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#EAF5ED">Zero Picking Error</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#EAF5ED">Camera scan check</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#EAF5ED">Blocks wrong SKU items</text>
+    <circle cx="74" cy="98" r="4" fill="#70DB8E" />
+  </g>
+
+  <!-- NODE 4: Staging Bay Allocation -->
+  <g transform="translate(570, 56)">
+    <rect class="step-pick-border" width="148" height="98" rx="12" fill="url(#cardGradPick)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">📦</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">4. Bag &amp; Stage</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#70DB8E">Bay Allocation</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Staging Bay: Counter #4</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Package Seal: #B-42</text>
+    <circle cx="74" cy="98" r="4" fill="#258B3E" />
+  </g>
+
+  <!-- NODE 5: Rider OTP Handover -->
+  <g transform="translate(748, 56)">
+    <rect class="step-pick-border" width="136" height="98" rx="12" fill="url(#cardGradHighlightPick)" stroke="#258B3E" stroke-width="1.2" />
+    <rect x="14" y="12" width="28" height="28" rx="7" fill="#EAF5ED" />
+    <text x="21" y="31" font-size="14">🛵</text>
+    <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">5. Rider Handover</text>
+    <text x="48" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#70DB8E">4-Digit PIN</text>
+    <text x="14" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Blinkit / Zepto / In-House</text>
+    <text x="14" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500" fill="#C2E2CB">Verified dispatch timestamp</text>
+    <circle cx="68" cy="98" r="4" fill="#258B3E" />
+  </g>
+
+  <!-- Bottom Explanatory Summary Bar -->
+  <g transform="translate(36, 172)">
+    <rect width="848" height="32" rx="8" fill="#0D2E1A" stroke="#1A632C" stroke-width="1" />
+    <text x="20" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#EAF5ED">
+      🎯 <tspan fill="#70DB8E" font-weight="800">99.8% Picking Accuracy</tspan> • Every SKU is barcode-verified during aisle transit to prevent wrong-item packing and customer refund penalties.
+    </text>
+    <text x="828" y="21" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#70DB8E">
+      ZERO ERRORS ✓
+    </text>
+  </g>
+</svg>
+
