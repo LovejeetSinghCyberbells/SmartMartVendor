@@ -34,6 +34,12 @@ const OnBoardingScreen = ({ navigation }: any) => {
         }
     };
 
+    const handlePrev = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
+        }
+    };
+
     const handleSkip = () => {
         navigation.replace('LoginScreen');
     };
@@ -48,7 +54,9 @@ const OnBoardingScreen = ({ navigation }: any) => {
                 image={currentData.image}
                 currentIndex={currentIndex}
                 onNext={handleNext}
+                onPrev={handlePrev}
                 onSkip={handleSkip}
+                slides={onboardingData}
             />
         </View>
     );
@@ -57,7 +65,7 @@ const OnBoardingScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#ebf7ed',
     },
 });
 

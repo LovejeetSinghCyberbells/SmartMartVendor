@@ -82,4 +82,38 @@ describe('OnboardingCard sliding animation', () => {
 
     expect(defaultProps.onSkip).toHaveBeenCalledTimes(1);
   });
+
+  it('renders Finish onboarding on the final slide (index 2) and triggers onNext', () => {
+    jest.useFakeTimers();
+    const finalProps = {
+      ...defaultProps,
+      currentIndex: 2,
+      onNext: jest.fn(),
+      onPrev: jest.fn(),
+    };
+
+    let renderer: ReactTestRenderer.ReactTestRenderer | undefined;
+    act(() => {
+      renderer = ReactTestRenderer.create(
+        <LocalizationProvider>
+          <OnboardingCard {...finalProps} />
+        </LocalizationProvider>
+      );
+    });
+
+    const root = renderer!.root;
+    const finishTouchables = root.findAll((node) => node.props.accessibilityLabel === 'Finish onboarding');
+    expect(finishTouchables.length).toBeGreaterThan(0);
+
+    act(() => {
+      finishTouchables[0].props.onPress();
+    });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(finalProps.onNext).toHaveBeenCalledTimes(1);
+    jest.useRealTimers();
+  });
 });
